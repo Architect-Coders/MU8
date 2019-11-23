@@ -1,16 +1,20 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "$rootDir/detekt.gradle"
 
 android {
     compileSdkVersion Versions.compileSDK
+    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
+        applicationId Versions.applicationId
+        minSdkVersion Versions.minSDK
+        targetSdkVersion Versions.targetSDK
+        versionCode Versions.appVersionCode
+        versionName Versions.appVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -28,6 +32,7 @@ dependencies {
 
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.coreKtx
+    implementation SupportDependencies.constraintLayout
 
     testImplementation TestDependencies.junit
     androidTestImplementation TestDependencies.testJunit
