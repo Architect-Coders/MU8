@@ -2,6 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+def apiPropertiesFile = rootProject.file("api.properties")
+def apiProperties = new Properties()
+if (apiPropertiesFile.exists()) {
+    apiProperties.load(new FileInputStream(apiPropertiesFile))
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -14,6 +20,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        buildConfigField("String", "API_BASE_URL", apiProperties['API_BASE_URL'])
+        buildConfigField("String", "MARVEL_PRIVATE_KEY", apiProperties['MARVEL_PRIVATE_KEY'])
+        buildConfigField("String", "MARVEL_PUBLIC_KEY", apiProperties['MARVEL_PUBLIC_KEY'])
+        buildConfigField("String", "TIME_STAMP", apiProperties['TIME_STAMP'])
     }
 
     buildTypes {
@@ -24,12 +35,24 @@ android {
     }
 }
 
+
+def retrofit_version = '2.6.2'
+def robolectric_version = '4.3.1'
+def coroutines_test_version = '1.2.1'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.1.0'
+
+    //Retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //Testing
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
