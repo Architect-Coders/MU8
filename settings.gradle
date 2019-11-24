@@ -1,2 +1,2 @@
-include ':app', ':domain', ':data'
+include ':presentation', ':domain', ':data'
 rootProject.name='MU8'
