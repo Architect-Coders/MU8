@@ -18,7 +18,7 @@ object Versions {
     internal const val junit = "4.12"
     internal const val espresso = "3.2.0"
     internal const val testJunit = "1.1.1"
-    internal const val robolectric = "4.3-beta-1"
+    internal const val robolectric = "4.3.1"
     internal const val coroutinesTest = "1.2.1"
 }
 
