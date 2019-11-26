@@ -10,15 +10,9 @@ if (apiPropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion Versions.compileSDK
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 
@@ -36,26 +30,23 @@ android {
     }
 }
 
-
-def retrofit_version = '2.6.2'
-def robolectric_version = '4.3.1'
-def coroutines_test_version = '1.2.1'
 dependencies {
     implementation project(":domain")
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
+
+    implementation KotlinDependencies.kotlinStdLib
+    implementation SupportDependencies.appCompat
+    implementation SupportDependencies.coreKtx
 
     //Retrofit
-    api "com.squareup.retrofit2:retrofit:$retrofit_version"
-    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api LibsDependencies.retrofit2
+    api LibsDependencies.retrofitGson
 
     //Testing
-    testImplementation 'junit:junit:4.12'
-    testImplementation "org.robolectric:robolectric:$robolectric_version"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation TestDependencies.junit
+    testImplementation TestDependencies.robolectric
+    testImplementation TestDependencies.coroutinesTest
+    androidTestImplementation TestDependencies.testJunit
+    androidTestImplementation TestDependencies.espressoCore
 }
