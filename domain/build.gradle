@@ -3,5 +3,5 @@ apply from: "$rootDir/detekt.gradle"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation KotlinDependencies.kotlinStdLib
 }
