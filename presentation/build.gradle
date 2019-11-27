@@ -35,16 +35,9 @@ dependencies {
     implementation SupportDependencies.constraintLayout
 
     implementation LibsDependencies.glide
-
-    testImplementation TestDependencies.junit
-    androidTestImplementation TestDependencies.testJunit
-    androidTestImplementation TestDependencies.espressoCore
-
-    implementation LibsDependencies.glide
     annotationProcessor LibsDependencies.glideCompiler
     annotationProcessor SupportDependencies.annotation
 
-    // Dependencies for local unit tests
     testImplementation TestDependencies.junit
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espressoCore
