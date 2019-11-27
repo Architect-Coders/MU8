@@ -2,13 +2,14 @@ package com.architect.coders.mu8.data.remote
 
 import com.architect.coders.mu8.data.remote.RetrofitService.Companion.API_KEY
 import com.architect.coders.mu8.data.remote.RetrofitService.Companion.HASH
+import com.architect.coders.mu8.data.remote.RetrofitService.Companion.TIME_STAMP
 import com.architect.coders.mu8.data.remote.model.getallComic.GetAllComicsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * All  marvel API Calls requires {@Link TS}, {@Link[API_KEY]}, and {@Link [HASH]}
+ * All  marvel API Calls requires {@Link [TIME_STAMP]}, {@Link[API_KEY]}, and {@Link [HASH]}
  */
 interface RetrofitService {
     @GET("/v1/public/comics")

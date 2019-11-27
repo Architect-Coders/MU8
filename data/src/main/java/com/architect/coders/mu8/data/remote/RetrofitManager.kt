@@ -1,6 +1,6 @@
 package com.architect.coders.mu8.data.remote
 
-import com.architect.coders.mu8.data.BuildConfig
+import com.architect.coders.mu8.data.BuildConfig.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,8 +17,4 @@ class RetrofitManager {
     }
 
     fun getService() = service
-
-    companion object {
-        const val BASE_URL = BuildConfig.API_BASE_URL
-    }
 }

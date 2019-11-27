@@ -36,6 +36,9 @@ dependencies {
     implementation SupportDependencies.recyclerview
     implementation SupportDependencies.constraintLayout
 
+    implementation LibsDependencies.glide
+    annotationProcessor LibsDependencies.glideAnnotation
+
     testImplementation TestDependencies.junit
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espressoCore

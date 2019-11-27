@@ -16,7 +16,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
 
-        buildConfigField("String", "API_BASE_URL", apiProperties['API_BASE_URL'])
+        buildConfigField("String", "BASE_URL", apiProperties['BASE_URL'])
         buildConfigField("String", "MARVEL_PRIVATE_KEY", apiProperties['MARVEL_PRIVATE_KEY'])
         buildConfigField("String", "MARVEL_PUBLIC_KEY", apiProperties['MARVEL_PUBLIC_KEY'])
         buildConfigField("String", "TIME_STAMP", apiProperties['TIME_STAMP'])

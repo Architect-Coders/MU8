@@ -1,6 +1,6 @@
 package com.architect.coders.mu8.data.remote.repository
 
-import com.architect.coders.mu8.data.BuildConfig
+import com.architect.coders.mu8.data.BuildConfig.TIME_STAMP
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -40,7 +40,7 @@ class ComicRepositoryTest {
 
     @Test
     fun getAllComics() = runBlocking {
-        val result = repository.getAllComics(BuildConfig.TIME_STAMP)
+        val result = repository.getAllComics(TIME_STAMP)
         Assert.assertTrue(result.isSuccessful)
     }
 }
