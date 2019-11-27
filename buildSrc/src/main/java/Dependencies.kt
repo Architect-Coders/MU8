@@ -10,11 +10,11 @@ object Versions {
 
     internal const val androidGradlePlugin = "3.5.2"
     internal const val kotlin = "1.3.60"
-    internal const val jvmTarget = "1.8"
     internal const val support = "1.1.0"
     internal const val constraintLayout = "1.1.3"
     internal const val retrofit = "2.6.2"
     internal const val detekt = "1.1.1"
+    internal const val glide = "4.10.0"
     internal const val junit = "4.12"
     internal const val espresso = "3.2.0"
     internal const val testJunit = "1.1.1"
@@ -50,4 +50,6 @@ object LibsDependencies {
     const val retrofit2 = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val detekt = "io.gitlab.arturbosch.detekt:detekt-cli:${Versions.detekt}"
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideAnnotation = "com.github.bumptech.glide:compiler:${Versions.glide}"
 }
