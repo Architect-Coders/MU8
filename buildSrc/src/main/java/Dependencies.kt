@@ -20,10 +20,15 @@ object Versions {
     internal const val testJunit = "1.1.1"
     internal const val robolectric = "4.3.1"
     internal const val coroutinesTest = "1.2.1"
+    internal const val lifecycleVersion = "2.1.0"
 }
 
 object GradleDependencies {
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
+}
+
+object JetPackDependencies {
+    const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
 }
 
 object SupportDependencies {

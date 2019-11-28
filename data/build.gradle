@@ -3,12 +3,23 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "$rootDir/detekt.gradle"
 
+def apiPropertiesFile = rootProject.file("api.properties")
+def apiProperties = new Properties()
+if (apiPropertiesFile.exists()) {
+    apiProperties.load(new FileInputStream(apiPropertiesFile))
+}
+
 android {
     compileSdkVersion Versions.compileSDK
 
     defaultConfig {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        buildConfigField("String", "BASE_URL", apiProperties['BASE_URL'])
+        buildConfigField("String", "MARVEL_PRIVATE_KEY", apiProperties['MARVEL_PRIVATE_KEY'])
+        buildConfigField("String", "MARVEL_PUBLIC_KEY", apiProperties['MARVEL_PUBLIC_KEY'])
+        buildConfigField("String", "TIME_STAMP", apiProperties['TIME_STAMP'])
     }
 
     buildTypes {
@@ -25,11 +36,17 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
-
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.coreKtx
 
+    //Retrofit
+    api LibsDependencies.retrofit2
+    api LibsDependencies.retrofitGson
+
+    //Testing
     testImplementation TestDependencies.junit
+    testImplementation TestDependencies.robolectric
+    testImplementation TestDependencies.coroutinesTest
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espressoCore
 }
