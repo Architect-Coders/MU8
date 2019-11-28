@@ -25,13 +25,15 @@ android {
 
 dependencies {
     implementation project(":domain")
+    implementation project(":data")
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
 
-    implementation SupportDependencies.appCompat
     implementation SupportDependencies.coreKtx
+    implementation SupportDependencies.appCompat
+    implementation SupportDependencies.recyclerview
     implementation SupportDependencies.constraintLayout
 
     implementation LibsDependencies.glide
