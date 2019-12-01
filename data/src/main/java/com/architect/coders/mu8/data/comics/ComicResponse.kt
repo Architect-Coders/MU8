@@ -1,5 +1,6 @@
-package com.architect.coders.mu8.data.remote.model.getallComic
+package com.architect.coders.mu8.data.comics
 
+import com.architect.coders.mu8.data.response.common.ThumbnailResponse
 import com.google.gson.annotations.SerializedName
 
 data class ComicResponse(

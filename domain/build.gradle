@@ -4,4 +4,5 @@ apply from: "$rootDir/detekt.gradle"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation KotlinDependencies.kotlinStdLib
+    api KotlinDependencies.coroutines
 }

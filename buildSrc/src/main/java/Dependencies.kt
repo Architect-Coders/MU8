@@ -1,5 +1,5 @@
 object Versions {
-    const val minSDK = 19
+    const val minSDK = 21
     const val compileSDK = 29
     const val targetSDK = 29
     const val buildToolsVersion = "29.0.2"
@@ -10,9 +10,11 @@ object Versions {
 
     internal const val androidGradlePlugin = "3.5.2"
     internal const val kotlin = "1.3.60"
+    internal const val coroutines = "1.3.2"
     internal const val support = "1.1.0"
     internal const val constraintLayout = "1.1.3"
     internal const val retrofit = "2.6.2"
+    internal const val httpLoggingInterceptorVersion = "4.2.1"
     internal const val detekt = "1.1.1"
     internal const val glide = "4.10.0"
     internal const val junit = "4.12"
@@ -41,6 +43,7 @@ object SupportDependencies {
 object KotlinDependencies {
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 }
 
 object TestDependencies {
@@ -57,4 +60,5 @@ object LibsDependencies {
     const val detekt = "io.gitlab.arturbosch.detekt:detekt-cli:${Versions.detekt}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideAnnotation = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLoggingInterceptorVersion}"
 }
