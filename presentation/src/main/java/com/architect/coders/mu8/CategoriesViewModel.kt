@@ -27,5 +27,4 @@ class CategoriesViewModel(private val categoriesRepository: CategoriesRepository
     fun onMoviewClicked(category: Category) {
         _model.value = UiModel.Navigation(category)
     }
-
 }
