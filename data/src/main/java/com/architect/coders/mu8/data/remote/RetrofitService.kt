@@ -14,9 +14,9 @@ import retrofit2.http.Query
 interface RetrofitService {
     @GET("/v1/public/comics")
     suspend fun getAllComics(
-        @Query(TIME_STAMP) timeStamp: String,
-        @Query(API_KEY) apiKey: String,
-        @Query(HASH) hash: String
+        @Query(API_KEY) apiKey: String = API_KEY,
+        @Query(HASH) hash: String = HASH,
+        @Query(TIME_STAMP) timeStamp: String = TIME_STAMP
     ): Response<GetAllComicsResponse>
 
     companion object {
