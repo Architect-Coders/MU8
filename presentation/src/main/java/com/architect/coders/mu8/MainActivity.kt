@@ -1,10 +1,9 @@
 package com.architect.coders.mu8
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -22,21 +21,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: CategoriesViewModel
     private lateinit var adapter: CategoriesAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         toolbar = findViewById(R.id.toolbar)
-
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         toolbarTitle = findViewById(R.id.toolbar_title)
         toolbarTitle.text = getString(R.string.app_name)
 
         recycler = findViewById(R.id.marvel_list)
 
-        viewModel = ViewModelProviders.of(this,
+        viewModel = ViewModelProviders.of(
+            this,
             CategoriesViewModelFactory(CategoriesRepository())
         )[CategoriesViewModel::class.java]
 
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUi(model: UiModel) {
-        when(model) {
+        when (model) {
             is UiModel.Content -> {
                 adapter = CategoriesAdapter(viewModel::onMoviewClicked, model.categories)
                 recycler.layoutManager = LinearLayoutManager(this)
