@@ -21,6 +21,10 @@ object Versions {
     internal const val robolectric = "4.3.1"
     internal const val coroutinesTest = "1.2.1"
     internal const val lifecycleVersion = "2.1.0"
+    internal const val firebaseAnalytics = "17.2.0"
+    internal const val crashlytics = "2.10.1"
+    internal const val googleService = "4.3.2"
+    internal const val fabricTools = "1.31.2"
 }
 
 object GradleDependencies {
@@ -36,6 +40,10 @@ object SupportDependencies {
     const val coreKtx = "androidx.core:core-ktx:${Versions.support}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.support}"
+    const val firebaseAnalytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
+    const val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
+    const val fabricTools = "io.fabric.tools:gradle:${Versions.fabricTools}"
+    const val googleService = "com.google.gms:google-services:${Versions.googleService}"
 }
 
 object KotlinDependencies {

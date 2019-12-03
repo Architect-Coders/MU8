@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "$rootDir/detekt.gradle"
@@ -37,6 +39,9 @@ dependencies {
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.recyclerview
     implementation SupportDependencies.constraintLayout
+
+    implementation SupportDependencies.crashlytics
+    implementation SupportDependencies.firebaseAnalytics
 
     implementation LibsDependencies.glide
     annotationProcessor LibsDependencies.glideAnnotation
