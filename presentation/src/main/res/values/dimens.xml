@@ -2,5 +2,9 @@
 <resources>
     <dimen name="category_title">22sp</dimen>
     <dimen name="category_footer_title">30dp</dimen>
-    <dimen name="zero">0dp</dimen>
+    <dimen name="no_width">0dp</dimen>
+    <dimen name="no_height">0dp</dimen>
+    <dimen name="margin_cardview">8dp</dimen>
+    <dimen name="elevation">6dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
 </resources>
