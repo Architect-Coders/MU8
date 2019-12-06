@@ -38,7 +38,6 @@ dependencies {
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.recyclerview
     implementation SupportDependencies.constraintLayout
-    implementation SupportDependencies.cardView
 
     implementation LibsDependencies.glide
     annotationProcessor LibsDependencies.glideAnnotation

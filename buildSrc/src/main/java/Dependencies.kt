@@ -1,5 +1,5 @@
 object Versions {
-    const val minSDK = 21
+    const val minSDK = 19
     const val compileSDK = 29
     const val targetSDK = 29
     const val buildToolsVersion = "29.0.2"
@@ -21,8 +21,6 @@ object Versions {
     internal const val robolectric = "4.3.1"
     internal const val coroutinesTest = "1.2.1"
     internal const val lifecycleVersion = "2.1.0"
-    internal const val materialVersion = "1.0.0"
-    internal const val cardView = "28.0.0"
 }
 
 object GradleDependencies {
@@ -38,8 +36,6 @@ object SupportDependencies {
     const val coreKtx = "androidx.core:core-ktx:${Versions.support}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.support}"
-    const val material = "com.google.android.material:material:${Versions.materialVersion}"
-    const val cardView = "com.android.support:cardview-v7:${Versions.cardView}"
 }
 
 object KotlinDependencies {
