@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.architect.coders.mu8.utils.loadUrl
 import com.architect.codes.mu8.model.Category
 
 class CategoriesAdapter(
