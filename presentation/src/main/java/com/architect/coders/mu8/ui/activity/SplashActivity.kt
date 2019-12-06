@@ -1,13 +1,13 @@
-package com.architect.coders.mu8.splash
+package com.architect.coders.mu8.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.architect.coders.mu8.R
-import com.architect.coders.mu8.splash.SplashViewModel.UiModel
-import com.architect.coders.mu8.ui.activity.ComicActivity
+import com.architect.coders.mu8.ui.viewmodel.SplashViewModel
+import com.architect.coders.mu8.ui.viewmodel.SplashViewModel.UiModel
 import com.architect.coders.mu8.utils.startActivity
 
 class SplashActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
         when (model) {
             is UiModel.GetVersion -> tvVersion.text = getString(R.string.version_name, model.versionName)
             is UiModel.Navigation -> {
-                startActivity<ComicActivity> {}
+                startActivity<CategoriesActivity> {}
                 finish()
             }
         }

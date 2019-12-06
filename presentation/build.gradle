@@ -30,7 +30,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
-    implementation KotlinDependencies.KotlinCoroutine
+    implementation KotlinDependencies.kotlinCoroutines
 
     implementation JetPackDependencies.lifecycle
 
@@ -38,6 +38,7 @@ dependencies {
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.recyclerview
     implementation SupportDependencies.constraintLayout
+    implementation SupportDependencies.cardView
 
     implementation LibsDependencies.glide
     annotationProcessor LibsDependencies.glideAnnotation
@@ -45,4 +46,5 @@ dependencies {
     testImplementation TestDependencies.junit
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espressoCore
+    implementation 'com.google.android.material:material:1.0.0'
 }

@@ -42,7 +42,7 @@ dependencies {
     //Retrofit
     api LibsDependencies.retrofit2
     api LibsDependencies.retrofitGson
-    api "com.squareup.okhttp3:logging-interceptor:4.2.1"
+    api LibsDependencies.interceptior
 
     //Testing
     testImplementation TestDependencies.junit

@@ -1,4 +1,4 @@
-package com.architect.coders.mu8.splash
+package com.architect.coders.mu8.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -30,14 +30,18 @@ class SplashViewModel : ViewModel(), Scope by Scope.Impl() {
 
     private fun onGetVersion() {
         launch {
-            _model.value = UiModel.GetVersion(onStringVersion())
+            _model.value =
+                UiModel.GetVersion(
+                    onStringVersion()
+                )
             delay(TIME_SLEEP)
             onChangeOfNavigationStatus()
         }
     }
 
     private fun onChangeOfNavigationStatus() {
-       _model.value = UiModel.Navigation
+       _model.value =
+           UiModel.Navigation
     }
 
     private fun onStringVersion() = BuildConfig.VERSION_NAME

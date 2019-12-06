@@ -1,5 +1,5 @@
 object Versions {
-    const val minSDK = 19
+    const val minSDK = 21
     const val compileSDK = 29
     const val targetSDK = 29
     const val buildToolsVersion = "29.0.2"
@@ -13,6 +13,7 @@ object Versions {
     internal const val support = "1.1.0"
     internal const val constraintLayout = "1.1.3"
     internal const val retrofit = "2.6.2"
+    internal const val interceptor = "4.2.1"
     internal const val detekt = "1.1.1"
     internal const val glide = "4.10.0"
     internal const val junit = "4.12"
@@ -22,6 +23,8 @@ object Versions {
     internal const val coroutinesTest = "1.2.1"
     internal const val lifecycleVersion = "2.1.0"
     internal const val kotlinx = "1.1.1"
+    internal const val materialVersion = "1.0.0"
+    internal const val cardView = "28.0.0"
 }
 
 object GradleDependencies {
@@ -37,12 +40,14 @@ object SupportDependencies {
     const val coreKtx = "androidx.core:core-ktx:${Versions.support}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.support}"
+    const val material = "com.google.android.material:material:${Versions.materialVersion}"
+    const val cardView = "com.android.support:cardview-v7:${Versions.cardView}"
 }
 
 object KotlinDependencies {
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val KotlinCoroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinx}"
+    const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesTest}"
 }
 
 object TestDependencies {
@@ -56,6 +61,7 @@ object TestDependencies {
 object LibsDependencies {
     const val retrofit2 = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val interceptior = "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
     const val detekt = "io.gitlab.arturbosch.detekt:detekt-cli:${Versions.detekt}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideAnnotation = "com.github.bumptech.glide:compiler:${Versions.glide}"
