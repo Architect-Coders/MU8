@@ -32,6 +32,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
+    implementation KotlinDependencies.kotlinCoroutines
 
     implementation JetPackDependencies.lifecycle
 
@@ -39,6 +40,7 @@ dependencies {
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.recyclerview
     implementation SupportDependencies.constraintLayout
+    implementation SupportDependencies.cardView
 
     implementation SupportDependencies.crashlytics
     implementation SupportDependencies.firebaseAnalytics

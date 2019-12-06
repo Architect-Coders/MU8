@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="category_title">22sp</dimen>
+    <dimen name="category_footer_title">30dp</dimen>
+    <dimen name="no_width">0dp</dimen>
+    <dimen name="no_height">0dp</dimen>
+    <dimen name="margin_cardview">8dp</dimen>
+    <dimen name="elevation">6dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+
+    <dimen name="text_dim_18">18sp</dimen>
+    <dimen name="text_dim_14">14sp</dimen>
+
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_14">14dp</dimen>
+</resources>

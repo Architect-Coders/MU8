@@ -1,5 +1,5 @@
 object Versions {
-    const val minSDK = 19
+    const val minSDK = 21
     const val compileSDK = 29
     const val targetSDK = 29
     const val buildToolsVersion = "29.0.2"
@@ -25,6 +25,8 @@ object Versions {
     internal const val crashlytics = "2.10.1"
     internal const val googleService = "4.3.2"
     internal const val fabricTools = "1.31.2"
+    internal const val materialVersion = "1.0.0"
+    internal const val cardView = "28.0.0"
 }
 
 object GradleDependencies {
@@ -40,6 +42,8 @@ object SupportDependencies {
     const val coreKtx = "androidx.core:core-ktx:${Versions.support}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.support}"
+    const val material = "com.google.android.material:material:${Versions.materialVersion}"
+    const val cardView = "com.android.support:cardview-v7:${Versions.cardView}"
     const val firebaseAnalytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
     const val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
     const val fabricTools = "io.fabric.tools:gradle:${Versions.fabricTools}"
@@ -49,6 +53,7 @@ object SupportDependencies {
 object KotlinDependencies {
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutinesTest}"
 }
 
 object TestDependencies {
