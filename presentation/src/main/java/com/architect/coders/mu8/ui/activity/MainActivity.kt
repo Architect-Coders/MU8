@@ -1,8 +1,9 @@
-package com.architect.coders.mu8
+package com.architect.coders.mu8.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.architect.codes.mu8.interactor.CharactersUseCase
+import com.architect.coders.mu8.R
+import com.architect.codes.mu8.interactor.CharactersUseCaseImpl
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,6 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val charactersUseCase = CharactersUseCase()
+        val charactersUseCase = CharactersUseCaseImpl()
     }
 }

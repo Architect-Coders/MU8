@@ -21,6 +21,7 @@ object Versions {
     internal const val robolectric = "4.3.1"
     internal const val coroutinesTest = "1.2.1"
     internal const val lifecycleVersion = "2.1.0"
+    internal const val kotlinx = "1.1.1"
 }
 
 object GradleDependencies {
@@ -41,6 +42,7 @@ object SupportDependencies {
 object KotlinDependencies {
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val KotlinCoroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinx}"
 }
 
 object TestDependencies {

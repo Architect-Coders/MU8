@@ -30,6 +30,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
+    implementation KotlinDependencies.KotlinCoroutine
 
     implementation JetPackDependencies.lifecycle
 

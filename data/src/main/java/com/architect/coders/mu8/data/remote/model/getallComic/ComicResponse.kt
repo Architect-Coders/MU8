@@ -7,13 +7,13 @@ data class ComicResponse(
     val id: Int,
 
     @SerializedName("title")
-    val title: String,
+    val title: String?,
 
     @SerializedName("description")
-    val description: String,
+    val description: String?,
 
     @SerializedName("format")
-    val format: String,
+    val format: String?,
 
     @SerializedName("thumbnail")
     val thumbnail: ThumbnailResponse,

@@ -11,10 +11,10 @@ class ComicRepository(private val mapper: ComicMapper = ComicMapper()) : IComicR
 
     override suspend fun getAllComics(): List<Comic> {
         val response = service.getAllComics()
+
         response.body()?.apply {
             return data.results.map { comicR -> mapper.transform(comicR) }
         }
         return listOf()
     }
-
 }
