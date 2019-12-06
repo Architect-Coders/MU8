@@ -14,6 +14,7 @@ class ComicsViewModel(private val useCase: IComicUseCase) : ViewModel(),
 
     sealed class UiModel {
         object ShowLoading : UiModel()
+        object InternetError : UiModel()
         class LoadData(val comics: List<Comic>) : UiModel()
         class NavigateTo(val cominc: Comic) : UiModel()
     }
@@ -33,7 +34,12 @@ class ComicsViewModel(private val useCase: IComicUseCase) : ViewModel(),
     private fun loadData() {
         launch {
             _model.value = ShowLoading
-            _model.value = LoadData(useCase.getComics())
+
+            try {
+                _model.value = LoadData(useCase.getComics())
+            } catch (e: Exception) {
+                _model.value = InternetError
+            }
         }
     }
 

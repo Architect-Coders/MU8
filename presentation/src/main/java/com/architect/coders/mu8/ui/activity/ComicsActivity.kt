@@ -17,8 +17,9 @@ import com.architect.coders.mu8.utils.getViewModel
 import com.architect.coders.mu8.utils.makeItGone
 import com.architect.coders.mu8.utils.makeItVisible
 import com.architect.codes.mu8.interactor.comics.ComicsUseCase
+import com.google.android.material.snackbar.Snackbar
 
-class ComicActivity : AppCompatActivity() {
+class ComicsActivity : AppCompatActivity() {
 
     private val progress: ProgressBar by lazy { findViewById<ProgressBar>(R.id.comic_activity_progress) }
     private val recycler: RecyclerView by lazy { findViewById<RecyclerView>(R.id.comic_activity_recycler) }
@@ -28,7 +29,7 @@ class ComicActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_comic)
+        setContentView(R.layout.activity_comics)
 
         viewModel = getViewModel {
             ComicsViewModel(
@@ -55,8 +56,19 @@ class ComicActivity : AppCompatActivity() {
                 progress.makeItGone()
                 recycler.makeItVisible()
             }
-            is NavigateTo -> Toast.makeText(this, "click", Toast.LENGTH_LONG).show()
-            // todo create comic detail
+
+            is InternetError -> {
+                progress.makeItGone()
+                recycler.makeItGone()
+                val snackbar = Snackbar.make(
+                    recycler,
+                    getString(R.string.error_internet_message),
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+
+            is NavigateTo -> Toast.makeText(this, uiModel.cominc.title, Toast.LENGTH_LONG).show()
+            // todo create comic detail to startActivty
         }
 
     }

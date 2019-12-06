@@ -23,7 +23,5 @@ class RetrofitManager {
         service = retrofit.create(RetrofitService::class.java)
     }
 
-
-
     fun getService() = service
 }
