@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ED1D24</color>
-    <color name="colorPrimaryDark">#8B0000</color>
-    <color name="colorAccent">#ED1D24</color>
+
+    <color name="colorPrimary">#ED1C24</color>
+    <color name="colorPrimaryDark">#D50000</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="mine_shaft">#292929</color>
+
 </resources>
