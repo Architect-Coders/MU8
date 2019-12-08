@@ -29,7 +29,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
-    implementation KotlinDependencies.kotlinCoroutines
 
     implementation JetPackDependencies.lifecycle
 

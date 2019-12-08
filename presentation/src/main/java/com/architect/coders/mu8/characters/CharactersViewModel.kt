@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.utils.ScopedViewModel
 import com.architect.codes.mu8.characters.Character
-import com.architect.codes.mu8.interactor.CharactersUseCase
+import com.architect.codes.mu8.characters.CharactersUseCase
 import kotlinx.coroutines.launch
 
 class CharactersViewModel(

@@ -2,15 +2,14 @@ package com.architect.coders.mu8.splash
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.architect.coders.mu8.BuildConfig
-import com.architect.coders.mu8.utils.Scope
+import com.architect.coders.mu8.utils.ScopedViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashViewModel : ViewModel(), Scope by Scope.Impl() {
+private const val TIME_SLEEP: Long = 2000
 
-    private val TIME_SLEEP: Long = 5000
+class SplashViewModel : ScopedViewModel() {
 
     sealed class UiModel {
         class GetVersion(val versionName: String) : UiModel()
@@ -32,18 +31,9 @@ class SplashViewModel : ViewModel(), Scope by Scope.Impl() {
         launch {
             _model.value = UiModel.GetVersion(onStringVersion())
             delay(TIME_SLEEP)
-            onChangeOfNavigationStatus()
+            _model.value = UiModel.Navigation
         }
     }
 
-    private fun onChangeOfNavigationStatus() {
-       _model.value = UiModel.Navigation
-    }
-
     private fun onStringVersion() = BuildConfig.VERSION_NAME
-
-    override fun onCleared() {
-        destroyScope()
-        super.onCleared()
-    }
 }

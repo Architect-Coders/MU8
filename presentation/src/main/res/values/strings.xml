@@ -1,4 +1,8 @@
 <resources>
+
     <string name="app_name">MU8</string>
-    <string name="version_name">V%1$s</string>
+    <string name="version_name">v %1$s</string>
+
+    <string name="characters_name">Characters</string>
+
 </resources>

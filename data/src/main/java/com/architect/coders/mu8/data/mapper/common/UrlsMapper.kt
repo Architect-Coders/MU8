@@ -2,7 +2,7 @@ package com.architect.coders.mu8.data.mapper.common
 
 import com.architect.coders.mu8.data.mapper.BaseResponseMapper
 import com.architect.coders.mu8.data.response.common.UrlsResponse
-import com.architect.codes.mu8.model.Urls
+import com.architect.codes.mu8.common.Urls
 
 class UrlsMapper : BaseResponseMapper<UrlsResponse, Urls>() {
 
