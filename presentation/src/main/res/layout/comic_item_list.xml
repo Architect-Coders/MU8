@@ -13,7 +13,6 @@
         android:layout_height="@dimen/dp_150"
         android:layout_marginLeft="@dimen/dp_4"
         android:layout_marginRight="@dimen/dp_4"
-        android:elevation="5dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,5 +35,4 @@
         app:layout_constraintStart_toStartOf="@+id/comic_item_image"
         app:layout_constraintTop_toBottomOf="@id/comic_item_image"
         tools:text="Ghost-Spider #4" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

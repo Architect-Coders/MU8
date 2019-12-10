@@ -1,9 +1,9 @@
 package com.architect.codes.mu8.interactor.comics
 
-import com.architect.codes.mu8.callback.IComicRepository
+import com.architect.codes.mu8.callback.ComicRepository
 import com.architect.codes.mu8.model.Comic
 
-class ComicsUseCase(private val comicRepository: IComicRepository) : IComicUseCase {
+class ComicsUseCaseImpl(private val comicRepository: ComicRepository) : ComicUseCase {
     override suspend fun getComics(): List<Comic> {
         return comicRepository.getAllComics()
     }

@@ -39,6 +39,7 @@ dependencies {
     implementation SupportDependencies.recyclerview
     implementation SupportDependencies.constraintLayout
     implementation SupportDependencies.cardView
+    implementation SupportDependencies.material
 
     implementation LibsDependencies.glide
     annotationProcessor LibsDependencies.glideAnnotation
@@ -46,5 +47,4 @@ dependencies {
     testImplementation TestDependencies.junit
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espressoCore
-    implementation 'com.google.android.material:material:1.0.0'
 }

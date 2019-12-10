@@ -30,10 +30,7 @@ class SplashViewModel : ViewModel(), Scope by Scope.Impl() {
 
     private fun onGetVersion() {
         launch {
-            _model.value =
-                UiModel.GetVersion(
-                    onStringVersion()
-                )
+            _model.value = UiModel.GetVersion(onStringVersion())
             delay(TIME_SLEEP)
             onChangeOfNavigationStatus()
         }

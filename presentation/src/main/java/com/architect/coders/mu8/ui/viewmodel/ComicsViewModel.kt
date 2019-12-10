@@ -2,15 +2,14 @@ package com.architect.coders.mu8.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.architect.coders.mu8.ui.common.Scope
+import com.architect.coders.mu8.ui.common.ScopedViewModel
 import com.architect.coders.mu8.ui.viewmodel.ComicsViewModel.UiModel.*
-import com.architect.codes.mu8.interactor.comics.IComicUseCase
+import com.architect.codes.mu8.interactor.comics.ComicUseCase
 import com.architect.codes.mu8.model.Comic
 import kotlinx.coroutines.launch
+import java.io.IOException
 
-class ComicsViewModel(private val useCase: IComicUseCase) : ViewModel(),
-    Scope by Scope.Impl() {
+class ComicsViewModel(private val useCase: ComicUseCase) : ScopedViewModel() {
 
     sealed class UiModel {
         object ShowLoading : UiModel()
@@ -48,7 +47,7 @@ class ComicsViewModel(private val useCase: IComicUseCase) : ViewModel(),
     }
 
     override fun onCleared() {
+        super.onCleared()
         destroyScope()
     }
-
 }

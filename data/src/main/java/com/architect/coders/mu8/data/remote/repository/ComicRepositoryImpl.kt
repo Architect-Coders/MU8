@@ -2,10 +2,11 @@ package com.architect.coders.mu8.data.remote.repository
 
 import com.architect.coders.mu8.data.remote.RetrofitManager
 import com.architect.coders.mu8.data.remote.mapper.ComicMapper
-import com.architect.codes.mu8.callback.IComicRepository
+import com.architect.codes.mu8.callback.ComicRepository
 import com.architect.codes.mu8.model.Comic
 
-class ComicRepository(private val mapper: ComicMapper = ComicMapper()) : IComicRepository {
+class ComicRepositoryImpl(private val mapper: ComicMapper = ComicMapper()) : ComicRepository {
+    
     private val retrofitManager = RetrofitManager()
     private val service = retrofitManager.getService()
 
@@ -13,7 +14,7 @@ class ComicRepository(private val mapper: ComicMapper = ComicMapper()) : IComicR
         val response = service.getAllComics()
 
         response.body()?.apply {
-            return data.results.map { comicR -> mapper.transform(comicR) }
+            return data.results.map { comicResponse -> mapper.transform(comicResponse) }
         }
         return listOf()
     }

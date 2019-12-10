@@ -1,6 +1,6 @@
 package com.architect.coders.mu8.data.remote.repository
 
-import com.architect.codes.mu8.callback.IComicRepository
+import com.architect.codes.mu8.callback.ComicRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -18,16 +18,16 @@ import java.io.IOException
 
 @RunWith(RobolectricTestRunner::class)
 @ExperimentalCoroutinesApi
-class ComicRepositoryTest {
+class ComicRepositoryImplTest {
 
-    private lateinit var repository: IComicRepository
+    private lateinit var repository: ComicRepository
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
     private val testScope = TestCoroutineScope(testCoroutineDispatcher)
 
     @Before
     fun setUp() {
         Dispatchers.setMain(testCoroutineDispatcher)
-        repository = ComicRepository()
+        repository = ComicRepositoryImpl()
     }
 
     @After

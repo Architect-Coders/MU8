@@ -3,8 +3,8 @@ package com.architect.coders.mu8.data
 import java.math.BigInteger
 import java.security.MessageDigest
 
-private const val HTTP = "http"
-private const val HTTPS = "https"
+private const val HTTP = "http://"
+private const val HTTPS = "https://"
 private const val ALGORITHM_MD5 = "MD5"
 private const val SIG_NUM = 1
 private const val RADIX = 16
@@ -22,7 +22,7 @@ fun String.md5(): String {
 }
 
 fun String.replaceHttps(): String {
-    if (this.contains(HTTP)) {
+    if (this.contains(HTTP,true)) {
         return this.replace(HTTP, HTTPS)
     }
     return this

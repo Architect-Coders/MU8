@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.activity.CategoriesActivity"></activity>
+        <activity android:name=".ui.activity.CategoriesActivity" />
         <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,6 +7,7 @@
     <dimen name="margin_cardview">8dp</dimen>
     <dimen name="elevation">6dp</dimen>
     <dimen name="corner_radius">8dp</dimen>
+
     <dimen name="sp_12">12sp</dimen>
 
     <dimen name="dp_0">0dp</dimen>

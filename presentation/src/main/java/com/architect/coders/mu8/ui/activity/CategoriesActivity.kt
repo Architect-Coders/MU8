@@ -16,6 +16,9 @@ import com.architect.coders.mu8.CategoriesViewModelFactory
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.data.local.categories.CategoriesRepository
 import com.architect.coders.mu8.utils.startActivity
+import com.architect.codes.mu8.CHARACTERS
+import com.architect.codes.mu8.COMICS
+import com.architect.codes.mu8.EVENTS
 
 class CategoriesActivity : AppCompatActivity() {
 
@@ -54,10 +57,11 @@ class CategoriesActivity : AppCompatActivity() {
             recycler.adapter = adapter
         }
         is UiModel.Navigation -> {
-            if (model.category.title == getString(R.string.category_section_comics))
-                startActivity<ComicsActivity> {}
-            else
-                Toast.makeText(this, model.category.title, Toast.LENGTH_SHORT).show()
+            when(model.category.title){
+                COMICS -> startActivity<ComicsActivity> {}
+                CHARACTERS, EVENTS -> Toast.makeText(this, COMICS, Toast.LENGTH_SHORT).show()
+                else -> Toast.makeText(this, COMICS, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

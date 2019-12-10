@@ -13,13 +13,13 @@ import com.architect.codes.mu8.model.Comic
 import kotlin.properties.Delegates
 
 class ComicsAdapter(private val listener: (Comic) -> Unit) : RecyclerView.Adapter<ComicHolder>() {
+
     var comics: List<Comic> by Delegates.observable(
         emptyList(),
         { _, _, _ -> notifyDataSetChanged() })
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicHolder {
-        val inflatedView = parent.inflate(R.layout.comic_item_list)
-        return ComicHolder(inflatedView)
+        return ComicHolder(parent.inflate(R.layout.comic_item_list))
     }
 
     override fun onBindViewHolder(holder: ComicHolder, position: Int) {
@@ -35,7 +35,7 @@ class ComicsAdapter(private val listener: (Comic) -> Unit) : RecyclerView.Adapte
         private var comicTitle: TextView = itemView.findViewById(R.id.comic_item_title)
 
         fun onBindComic(item: Comic) {
-            comicImage.loadUrl(item.thumbnailUrl)
+            comicImage.loadUrl(item.thumbnailUrl, R.drawable.logo_marvel, R.drawable.error_image)
             comicTitle.text = item.title
         }
     }

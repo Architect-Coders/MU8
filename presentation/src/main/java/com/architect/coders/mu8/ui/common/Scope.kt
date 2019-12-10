@@ -8,7 +8,7 @@ import kotlin.coroutines.CoroutineContext
 
 interface Scope : CoroutineScope {
 
-    class Impl : Scope {
+    class Implementation : Scope {
         override lateinit var job: Job
     }
 

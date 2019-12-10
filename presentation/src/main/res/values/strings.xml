@@ -2,6 +2,8 @@
     <string name="app_name">MU8</string>
     <string name="version_name">V%1$s</string>
 
+    <string name="toolbar_title_comics">Comics</string>
+
     <string name="category_section_comics">Comics</string>
     <string name="error_internet_message">Internet Error, please check your connection</string>
 </resources>
