@@ -26,11 +26,9 @@ android {
 dependencies {
     implementation project(":domain")
     implementation project(":data")
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
-    implementation KotlinDependencies.kotlinCoroutines
 
     implementation JetPackDependencies.lifecycle
 

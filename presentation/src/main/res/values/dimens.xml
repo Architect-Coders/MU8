@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="match_constraint">0dp</dimen>
+
     <dimen name="category_title">22sp</dimen>
     <dimen name="category_footer_title">30dp</dimen>
     <dimen name="no_width">0dp</dimen>
@@ -13,4 +16,5 @@
 
     <dimen name="margin_20">20dp</dimen>
     <dimen name="margin_14">14dp</dimen>
+
 </resources>

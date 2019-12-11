@@ -1,6 +1,8 @@
 package com.architect.coders.mu8.data.remote.repository
 
 import com.architect.coders.mu8.data.BuildConfig.TIME_STAMP
+import com.architect.coders.mu8.data.comics.ComicRepository
+import com.architect.coders.mu8.data.comics.IComicRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -21,14 +23,14 @@ import java.io.IOException
 class ComicRepositoryTest {
 
     private lateinit var repository: IComicRepository
+
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
     private val testScope = TestCoroutineScope(testCoroutineDispatcher)
 
     @Before
     fun setUp() {
         Dispatchers.setMain(testCoroutineDispatcher)
-        repository =
-            ComicRepository()
+        repository = ComicRepository()
     }
 
     @After

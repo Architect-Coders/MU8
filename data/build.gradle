@@ -32,18 +32,17 @@ android {
 
 dependencies {
     implementation project(":domain")
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
+
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.coreKtx
 
-    //Retrofit
     api LibsDependencies.retrofit2
     api LibsDependencies.retrofitGson
+    api LibsDependencies.httpLoggingInterceptor
 
-    //Testing
     testImplementation TestDependencies.junit
     testImplementation TestDependencies.robolectric
     testImplementation TestDependencies.coroutinesTest
