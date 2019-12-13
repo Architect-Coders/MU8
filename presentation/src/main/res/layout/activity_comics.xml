@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ComicsActivity">
+    tools:context=".comics.ComicsActivity">
 
     <include
         android:id="@+id/comic_activity_toolbar"
@@ -15,8 +15,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/comic_activity_recycler"
-        android:layout_width="@dimen/dp_0"
-        android:layout_height="@dimen/dp_0"
+        android:layout_width="@dimen/no_width"
+        android:layout_height="@dimen/no_height"
         android:foregroundGravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/comic_activity_toolbar"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/comic_item_list"
-        tools:spanCount="2" />
+        tools:spanCount="@integer/int_2" />
 
     <ProgressBar
         android:id="@+id/comic_activity_progress"

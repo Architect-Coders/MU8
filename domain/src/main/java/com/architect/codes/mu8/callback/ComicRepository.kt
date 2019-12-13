@@ -1,7 +1,7 @@
 package com.architect.codes.mu8.callback
 
-import com.architect.codes.mu8.model.Comic
+import com.architect.codes.mu8.comics.Comic
 
-open interface ComicRepository {
-    suspend fun getAllComics(): List<Comic>
+interface ComicRepository {
+    suspend operator fun invoke(): List<Comic>
 }

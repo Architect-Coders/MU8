@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/mine_shaft"
-    tools:context=".ui.activity.CategoriesActivity">
+    tools:context=".categories.CategoriesActivity">
 
     <include
         android:id="@+id/toolbar"

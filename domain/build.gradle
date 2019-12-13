@@ -5,5 +5,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation KotlinDependencies.kotlinStdLib
 
-    api LibsDependencies.retrofit2
+    api KotlinDependencies.coroutines
 }

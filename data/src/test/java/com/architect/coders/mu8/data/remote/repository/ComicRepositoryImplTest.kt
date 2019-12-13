@@ -1,5 +1,7 @@
 package com.architect.coders.mu8.data.remote.repository
 
+import com.architect.coders.mu8.data.comics.ComicRepositoryImpl
+import com.architect.coders.mu8.data.comics.ComicsMapper
 import com.architect.codes.mu8.callback.ComicRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -27,7 +29,7 @@ class ComicRepositoryImplTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(testCoroutineDispatcher)
-        repository = ComicRepositoryImpl()
+        repository = ComicRepositoryImpl(ComicsMapper())
     }
 
     @After
@@ -39,7 +41,7 @@ class ComicRepositoryImplTest {
 
     @Test
     fun getAllComics() = runBlocking {
-        val result = repository.getAllComics()
+        val result = repository.invoke()
         Assert.assertTrue(result.isNotEmpty())
     }
 }

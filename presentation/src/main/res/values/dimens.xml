@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="category_title">22sp</dimen>
-    <dimen name="category_footer_title">30dp</dimen>
-    <dimen name="no_width">0dp</dimen>
-    <dimen name="no_height">0dp</dimen>
-    <dimen name="margin_cardview">8dp</dimen>
-    <dimen name="elevation">6dp</dimen>
-    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="text_dim_14">@dimen/sp_14</dimen>
+    <dimen name="text_dim_18">@dimen/sp_18</dimen>
+    <dimen name="category_title">@dimen/sp_22</dimen>
+
+    <dimen name="match_constraint">0dp</dimen>
+    <dimen name="no_width">@dimen/dp_0</dimen>
+    <dimen name="no_height">@dimen/dp_0</dimen>
+    <dimen name="elevation">@dimen/dp_6</dimen>
+    <dimen name="corner_radius">@dimen/dp_8</dimen>
+    <dimen name="margin_cardview">@dimen/dp_8</dimen>
+    <dimen name="margin_14">@dimen/dp_14</dimen>
+    <dimen name="margin_20">@dimen/dp_20</dimen>
+    <dimen name="category_footer_title">@dimen/dp_30</dimen>
 
     <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_22">22sp</dimen>
 
     <dimen name="dp_0">0dp</dimen>
     <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
     <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_14">14dp</dimen>
     <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_150">150dp</dimen>
-
-    <dimen name="text_dim_18">18sp</dimen>
-    <dimen name="text_dim_14">14sp</dimen>
-
-    <dimen name="margin_20">20dp</dimen>
-    <dimen name="margin_14">14dp</dimen>
 </resources>

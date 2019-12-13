@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.architect.coders.mu8.utils
 
 import android.app.Activity
@@ -9,7 +7,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.*
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.LayoutRes
@@ -19,23 +16,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 
-
-fun Context.isInternetConned(): Boolean {
-    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
-    return activeNetwork?.isConnectedOrConnecting == true
-}
-
 fun View.makeItGone() {
-    visibility = GONE
+    visibility = View.GONE
 }
 
 fun View.makeItVisible() {
-    visibility = VISIBLE
+    visibility = View.VISIBLE
 }
 
 fun View.makeItInvisible() {
-    visibility = INVISIBLE
+    visibility = View.INVISIBLE
 }
 
 fun ImageView.loadUrl(url: String, placeHolder: Int, errorImage: Int) {

@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "$rootDir/detekt.gradle"
@@ -26,11 +28,9 @@ android {
 dependencies {
     implementation project(":domain")
     implementation project(":data")
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
-    implementation KotlinDependencies.kotlinCoroutines
 
     implementation JetPackDependencies.lifecycle
 
@@ -40,6 +40,8 @@ dependencies {
     implementation SupportDependencies.constraintLayout
     implementation SupportDependencies.cardView
     implementation SupportDependencies.material
+    implementation SupportDependencies.crashlytics
+    implementation SupportDependencies.firebaseAnalytics
 
     implementation LibsDependencies.glide
     annotationProcessor LibsDependencies.glideAnnotation
