@@ -23,6 +23,10 @@ object Versions {
     internal const val robolectric = "4.3.1"
     internal const val coroutinesTest = "1.2.1"
     internal const val lifecycleVersion = "2.1.0"
+    internal const val firebaseAnalytics = "17.2.0"
+    internal const val crashlytics = "2.10.1"
+    internal const val googleService = "4.3.2"
+    internal const val fabricTools = "1.31.2"
     internal const val materialVersion = "1.0.0"
     internal const val cardView = "28.0.0"
 }
@@ -42,6 +46,10 @@ object SupportDependencies {
     const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.support}"
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
     const val cardView = "com.android.support:cardview-v7:${Versions.cardView}"
+    const val firebaseAnalytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
+    const val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
+    const val fabricTools = "io.fabric.tools:gradle:${Versions.fabricTools}"
+    const val googleService = "com.google.gms:google-services:${Versions.googleService}"
 }
 
 object KotlinDependencies {
