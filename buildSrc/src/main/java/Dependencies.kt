@@ -15,7 +15,7 @@ object Versions {
     internal const val constraintLayout = "1.1.3"
     internal const val retrofit = "2.6.2"
     internal const val httpLoggingInterceptorVersion = "4.2.1"
-    internal const val detekt = "1.1.1"
+    internal const val detekt = "1.2.1"
     internal const val glide = "4.10.0"
     internal const val junit = "4.12"
     internal const val espresso = "3.2.0"

@@ -1,5 +1,5 @@
 build:
-  maxIssues: 1
+  maxIssues: 200
   weights:
   # complexity: 2
   # LongParameterList: 1
@@ -202,7 +202,7 @@ formatting:
     continuationIndentSize: 4
   MaximumLineLength:
     active: true
-    maxLineLength: 140
+    maxLineLength: 200
   ModifierOrdering:
     active: true
     autoCorrect: true
@@ -218,8 +218,6 @@ formatting:
   NoEmptyClassBody:
     active: true
     autoCorrect: true
-  NoItParamInMultilineLambda:
-    active: false
   NoLineBreakAfterElse:
     active: true
     autoCorrect: true
@@ -272,9 +270,6 @@ formatting:
     active: true
     autoCorrect: true
   SpacingAroundRangeOperator:
-    active: true
-    autoCorrect: true
-  SpacingAroundUnaryOperators:
     active: true
     autoCorrect: true
   StringTemplate:
@@ -465,7 +460,7 @@ style:
     active: false
   MaxLineLength:
     active: true
-    maxLineLength: 140
+    maxLineLength: 200
     excludePackageStatements: true
     excludeImportStatements: true
     excludeCommentStatements: false
@@ -476,7 +471,7 @@ style:
   NestedClassesVisibility:
     active: false
   NewLineAtEndOfFile:
-    active: true
+    active: false
   NoTabs:
     active: false
   OptionalAbstractKeyword:

@@ -1,19 +1,8 @@
-configurations {
-    detekt
-}
+apply plugin: 'io.gitlab.arturbosch.detekt'
 
-dependencies {
-    detekt LibsDependencies.detekt
+detekt {
+    config = files("$rootDir/default-detekt-config.yml")
+     //  filters = ".*build.*,.*/resources/.*,.*/tmp/.*"
+    //Optional baseline, uncomment & run gradle command detektBaseline to exclude existing issues
+    //  baseline = file("detekt-baseline.xml")
 }
-
-task detekt(type: JavaExec) {
-    main = "io.gitlab.arturbosch.detekt.cli.Main"
-    classpath = configurations.detekt
-    def input = "$projectDir"
-    def config = "$rootDir/default-detekt-config.yml"
-    def exclude = ".*test.*,.*/resources/.*,.*/tmp/.*"
-    def params = ['-i', input, '-c', config, '-ex', exclude, '-r', '--fail-fast']
-    args(params)
-}
-
-check.dependsOn detekt
