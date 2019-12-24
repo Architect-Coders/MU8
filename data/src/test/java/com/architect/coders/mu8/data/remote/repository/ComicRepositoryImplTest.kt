@@ -1,8 +1,8 @@
 package com.architect.coders.mu8.data.remote.repository
 
-import com.architect.coders.mu8.data.BuildConfig.TIME_STAMP
-import com.architect.coders.mu8.data.comics.ComicRepository
-import com.architect.coders.mu8.data.comics.IComicRepository
+import com.architect.coders.mu8.data.comics.ComicRepositoryImpl
+import com.architect.coders.mu8.data.comics.ComicsMapper
+import com.architect.codes.mu8.callback.ComicRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -20,17 +20,16 @@ import java.io.IOException
 
 @RunWith(RobolectricTestRunner::class)
 @ExperimentalCoroutinesApi
-class ComicRepositoryTest {
+class ComicRepositoryImplTest {
 
-    private lateinit var repository: IComicRepository
-
+    private lateinit var repository: ComicRepository
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
     private val testScope = TestCoroutineScope(testCoroutineDispatcher)
 
     @Before
     fun setUp() {
         Dispatchers.setMain(testCoroutineDispatcher)
-        repository = ComicRepository()
+        repository = ComicRepositoryImpl(ComicsMapper())
     }
 
     @After
@@ -42,7 +41,7 @@ class ComicRepositoryTest {
 
     @Test
     fun getAllComics() = runBlocking {
-        val result = repository.getAllComics(TIME_STAMP)
-        Assert.assertTrue(result.isSuccessful)
+        val result = repository.invoke()
+        Assert.assertTrue(result.isNotEmpty())
     }
 }

@@ -39,7 +39,7 @@ dependencies {
     implementation SupportDependencies.recyclerview
     implementation SupportDependencies.constraintLayout
     implementation SupportDependencies.cardView
-
+    implementation SupportDependencies.material
     implementation SupportDependencies.crashlytics
     implementation SupportDependencies.firebaseAnalytics
 

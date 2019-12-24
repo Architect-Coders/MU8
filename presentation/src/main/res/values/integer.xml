@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="float_0_5" format="float" type="integer">0.5</item>
+    <item name="int_2" format="integer" type="integer">2</item>
+</resources>

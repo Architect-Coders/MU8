@@ -13,7 +13,10 @@ object MarvelServiceManager {
 
     private val okHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY
-        OkHttpClient.Builder().addInterceptor(this).build()
+        OkHttpClient
+            .Builder()
+            .addInterceptor(this)
+            .build()
     }
 
     val service = Retrofit.Builder()

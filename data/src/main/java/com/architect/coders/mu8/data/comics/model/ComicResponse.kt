@@ -1,4 +1,4 @@
-package com.architect.coders.mu8.data.comics
+package com.architect.coders.mu8.data.comics.model
 
 import com.architect.coders.mu8.data.response.common.ThumbnailResponse
 import com.google.gson.annotations.SerializedName
@@ -17,8 +17,5 @@ data class ComicResponse(
     val format: String,
 
     @SerializedName("thumbnail")
-    val thumbnail: ThumbnailResponse,
-
-    @SerializedName("characters")
-    val charactersWrapper : CharactersWrapperResponse
+    val thumbnail: ThumbnailResponse
 )
