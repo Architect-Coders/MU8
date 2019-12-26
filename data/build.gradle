@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply from: "$rootDir/detekt.gradle"
 
 def apiPropertiesFile = rootProject.file("api.properties")
@@ -20,6 +21,12 @@ android {
         buildConfigField("String", "MARVEL_PRIVATE_KEY", apiProperties['MARVEL_PRIVATE_KEY'])
         buildConfigField("String", "MARVEL_PUBLIC_KEY", apiProperties['MARVEL_PUBLIC_KEY'])
         buildConfigField("String", "TIME_STAMP", apiProperties['TIME_STAMP'])
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.incremental":"true"]
+            }
+        }
     }
 
     buildTypes {
@@ -39,6 +46,9 @@ dependencies {
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.coreKtx
 
+    implementation LibsDependencies.room
+    kapt LibsDependencies.roomCompiler
+
     api LibsDependencies.retrofit2
     api LibsDependencies.retrofitGson
     api LibsDependencies.httpLoggingInterceptor
@@ -46,6 +56,7 @@ dependencies {
     testImplementation TestDependencies.junit
     testImplementation TestDependencies.robolectric
     testImplementation TestDependencies.coroutinesTest
+
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espressoCore
 }

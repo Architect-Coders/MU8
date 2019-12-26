@@ -1,8 +1,6 @@
 package com.architect.coders.mu8.categories
 
 import android.os.Bundle
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,15 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.categories.CategoriesViewModel.UiModel
 import com.architect.coders.mu8.characters.CharactersActivity
-import com.architect.coders.mu8.data.local.categories.CategoriesRepository
 import com.architect.coders.mu8.comics.ComicsActivity
+import com.architect.coders.mu8.data.categories.CategoriesRepository
 import com.architect.coders.mu8.utils.getViewModel
 import com.architect.coders.mu8.utils.startActivity
-import com.architect.codes.mu8.CHARACTERS
-import com.architect.codes.mu8.COMICS
-import com.architect.codes.mu8.EVENTS
-import com.architect.codes.mu8.NOT_FOUND
-import com.crashlytics.android.Crashlytics
+import com.architect.codes.mu8.utils.CHARACTERS
+import com.architect.codes.mu8.utils.COMICS
+import com.architect.codes.mu8.utils.EVENTS
+import com.architect.codes.mu8.utils.NOT_FOUND
 
 class CategoriesActivity : AppCompatActivity() {
 
@@ -46,20 +43,23 @@ class CategoriesActivity : AppCompatActivity() {
         recycler = findViewById(R.id.marvel_list)
 
         viewModel = getViewModel { CategoriesViewModel(CategoriesRepository()) }
+
+        adapter = CategoriesAdapter(viewModel::onCategoryClicked)
+        recycler.layoutManager = LinearLayoutManager(this)
+        recycler.adapter = adapter
+
         viewModel.model.observe(this, Observer(::updateUi))
     }
 
     private fun updateUi(model: UiModel) {
         when (model) {
             is UiModel.Content -> {
-                adapter = CategoriesAdapter(viewModel::onCategoryClicked, model.categories)
-                recycler.layoutManager = LinearLayoutManager(this)
-                recycler.adapter = adapter
+                adapter.categories = model.categories
             }
             is UiModel.Navigation -> {
                 when (model.categoryName) {
                     CHARACTERS -> startActivity<CharactersActivity> {}
-                    COMICS -> startActivity<ComicsActivity>{}
+                    COMICS -> startActivity<ComicsActivity> {}
                     EVENTS -> Toast.makeText(this, EVENTS, Toast.LENGTH_SHORT).show()
                     else -> Toast.makeText(this, NOT_FOUND, Toast.LENGTH_SHORT).show()
                 }
