@@ -15,6 +15,7 @@ import com.architect.coders.mu8.characters.CharactersUiModel.Content
 import com.architect.coders.mu8.characters.CharactersUiModel.Loading
 import com.architect.coders.mu8.characters.CharactersUiModel.Navigation
 import com.architect.coders.mu8.characters.detail.CharactersDetailActivity
+import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.data.characters.CharactersMapper
 import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
 import com.architect.coders.mu8.data.mapper.common.UrlsMapper
@@ -44,7 +45,7 @@ class CharactersActivity : AppCompatActivity() {
         viewModel = getViewModel {
             CharactersViewModel(
                 CharactersUseCaseImpl(
-                    CharactersRepositoryImpl(CharactersMapper(UrlsMapper()))
+                    CharactersRepositoryImpl(CharactersMapper(UrlsMapper()), application as DataApp)
                 )
             )
         }

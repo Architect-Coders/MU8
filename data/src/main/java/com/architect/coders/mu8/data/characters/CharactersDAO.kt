@@ -1,0 +1,19 @@
+package com.architect.coders.mu8.data.characters
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy.IGNORE
+import androidx.room.Query
+
+@Dao
+interface CharactersDAO {
+
+    @Query("SELECT * FROM CharactersEntity")
+    fun getAllCharacters(): List<CharactersEntity>
+
+    @Query("SELECT COUNT(id) FROM CharactersEntity")
+    fun charactersCount(): Int
+
+    @Insert(onConflict = IGNORE)
+    fun insertCharacters(characters: List<CharactersEntity>)
+}

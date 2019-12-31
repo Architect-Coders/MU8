@@ -1,30 +1,40 @@
 package com.architect.coders.mu8.data.characters
 
-import com.architect.coders.mu8.data.service.MarvelServiceManager
+import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.data.service.MarvelServiceManager.hashcode
+import com.architect.coders.mu8.data.service.MarvelServiceManager.service
+import com.architect.coders.mu8.data.utils.DEFAULT_OFFSET
+import com.architect.coders.mu8.data.utils.LIMIT
 import com.architect.coders.mu8.data.utils.MARVEL_PUBLIC_KEY
 import com.architect.coders.mu8.data.utils.TIME_STAMP
 import com.architect.codes.mu8.characters.Character
 import com.architect.codes.mu8.characters.CharactersRepository
-import com.architect.codes.mu8.common.Scope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class CharactersRepositoryImpl(
-    private val mapper: CharactersMapper
-) : CharactersRepository, Scope by Scope.Implementation() {
+    private val mapper: CharactersMapper,
+    application: DataApp
+) : CharactersRepository {
 
-    init {
-        initScope()
-    }
+    private val database = application.database
 
-    override suspend fun invoke(): List<Character> {
-        val response = MarvelServiceManager.service.getAllCharacters(TIME_STAMP, MARVEL_PUBLIC_KEY, hashcode)
+    override suspend fun invoke(): List<Character> = withContext(Dispatchers.IO) {
+        with(database.getCharactersDao()) {
+            if (charactersCount() <= 0) {
+                val response = service.getAllCharacters(
+                    TIME_STAMP,
+                    MARVEL_PUBLIC_KEY,
+                    hashcode,
+                    DEFAULT_OFFSET,
+                    LIMIT
+                )
 
-        val characters = mutableListOf<Character>()
-        if (response.isSuccessful) {
-            response.body()?.data?.results?.forEach {
-                characters.add(mapper.transform(it))
+                if (response.isSuccessful) {
+                    response.body()?.data?.results?.run { insertCharacters(this) }
+                }
             }
+            return@withContext getAllCharacters().map { mapper.transform(it) }
         }
-        return characters
     }
 }
