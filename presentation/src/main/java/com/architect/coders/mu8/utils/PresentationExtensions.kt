@@ -3,8 +3,6 @@ package com.architect.coders.mu8.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

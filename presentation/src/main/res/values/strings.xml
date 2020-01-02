@@ -6,4 +6,5 @@
 
     <string name="characters_name">Characters</string>
     <string name="comics_name">Comics</string>
+    <string name="events_name">Eventos</string>
 </resources>

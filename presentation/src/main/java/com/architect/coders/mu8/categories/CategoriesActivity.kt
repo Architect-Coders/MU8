@@ -1,8 +1,6 @@
 package com.architect.coders.mu8.categories
 
 import android.os.Bundle
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,13 +13,13 @@ import com.architect.coders.mu8.categories.CategoriesViewModel.UiModel
 import com.architect.coders.mu8.characters.CharactersActivity
 import com.architect.coders.mu8.data.local.categories.CategoriesRepository
 import com.architect.coders.mu8.comics.ComicsActivity
+import com.architect.coders.mu8.events.EventsActivity
 import com.architect.coders.mu8.utils.getViewModel
 import com.architect.coders.mu8.utils.startActivity
 import com.architect.codes.mu8.CHARACTERS
 import com.architect.codes.mu8.COMICS
 import com.architect.codes.mu8.EVENTS
 import com.architect.codes.mu8.NOT_FOUND
-import com.crashlytics.android.Crashlytics
 
 class CategoriesActivity : AppCompatActivity() {
 
@@ -59,8 +57,8 @@ class CategoriesActivity : AppCompatActivity() {
             is UiModel.Navigation -> {
                 when (model.categoryName) {
                     CHARACTERS -> startActivity<CharactersActivity> {}
-                    COMICS -> startActivity<ComicsActivity>{}
-                    EVENTS -> Toast.makeText(this, EVENTS, Toast.LENGTH_SHORT).show()
+                    COMICS -> startActivity<ComicsActivity> {}
+                    EVENTS -> startActivity<EventsActivity> {}
                     else -> Toast.makeText(this, NOT_FOUND, Toast.LENGTH_SHORT).show()
                 }
             }
