@@ -36,7 +36,7 @@ class EventsAdapter : RecyclerView.Adapter<ViewHolder>() {
 
         fun bind(item: Event) {
 
-            image.loadUrl(item.thumbnail, R.drawable.logo_marvel, R.drawable.error_image)
+            image.loadUrl(item.thumbnail)
             title.text = item.title
         }
     }

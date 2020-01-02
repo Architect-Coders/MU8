@@ -1,4 +1,4 @@
-package com.architect.codes.mu8
+package com.architect.codes.mu8.utils
 
 const val EMPTY_STRING = ""
 const val NOT_FOUND = "Not Found"

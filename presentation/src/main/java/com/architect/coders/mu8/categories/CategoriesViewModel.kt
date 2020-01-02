@@ -3,7 +3,7 @@ package com.architect.coders.mu8.categories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.architect.coders.mu8.data.local.categories.CategoriesRepository
+import com.architect.coders.mu8.data.categories.CategoriesRepository
 import com.architect.codes.mu8.categories.Category
 
 class CategoriesViewModel(private val categoriesRepository: CategoriesRepository) : ViewModel() {

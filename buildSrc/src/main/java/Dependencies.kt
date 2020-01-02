@@ -29,6 +29,7 @@ object Versions {
     internal const val fabricTools = "1.31.2"
     internal const val materialVersion = "1.0.0"
     internal const val cardView = "28.0.0"
+    internal const val roomVersion = "2.2.3"
 }
 
 object GradleDependencies {
@@ -73,4 +74,6 @@ object LibsDependencies {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideAnnotation = "com.github.bumptech.glide:compiler:${Versions.glide}"
     const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLoggingInterceptorVersion}"
+    const val room = "androidx.room:room-runtime:${Versions.roomVersion}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
 }

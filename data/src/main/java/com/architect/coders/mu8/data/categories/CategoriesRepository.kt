@@ -1,8 +1,8 @@
-package com.architect.coders.mu8.data.local.categories
+package com.architect.coders.mu8.data.categories
 
-import com.architect.codes.mu8.CHARACTERS
-import com.architect.codes.mu8.COMICS
-import com.architect.codes.mu8.EVENTS
+import com.architect.codes.mu8.utils.CHARACTERS
+import com.architect.codes.mu8.utils.COMICS
+import com.architect.codes.mu8.utils.EVENTS
 import com.architect.codes.mu8.categories.Category
 
 class CategoriesRepository {
