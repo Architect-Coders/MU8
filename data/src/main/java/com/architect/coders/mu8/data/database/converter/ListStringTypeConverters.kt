@@ -1,27 +1,26 @@
 package com.architect.coders.mu8.data.database.converter
 
 import androidx.room.TypeConverter
-import com.architect.coders.mu8.data.response.common.UrlsResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class UrlsTypeConverters {
+class ListStringTypeConverters {
 
     private val gson = Gson()
 
     @TypeConverter
-    fun stringToUrls(data: String?): List<UrlsResponse> {
-        if (data == null) {
+    fun stringToListOfStrings(data: String?): List<String> {
+        if (data == null || data == "null") {
             return emptyList()
         }
-        val type = object : TypeToken<List<UrlsResponse>>() {}.type
+        val type = object : TypeToken<List<String>>() {}.type
         return gson.fromJson(data, type)
     }
 
     @TypeConverter
-    fun urlsToString(urls: List<UrlsResponse>?): String {
+    fun listOfStringsToString(urls: List<String>?): String {
         if (urls.isNullOrEmpty()) {
-            gson.toJson(emptyList<UrlsResponse>())
+            gson.toJson(emptyList<String>())
         }
         return gson.toJson(urls)
     }

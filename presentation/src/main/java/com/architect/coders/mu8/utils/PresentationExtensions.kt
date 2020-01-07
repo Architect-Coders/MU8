@@ -3,8 +3,6 @@ package com.architect.coders.mu8.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.architect.coders.mu8.R
 import com.bumptech.glide.Glide
 
 fun View.makeItGone() {
@@ -28,16 +27,10 @@ fun View.makeItInvisible() {
     visibility = View.INVISIBLE
 }
 
-fun ImageView.loadUrl(url: String, placeHolder: Int, errorImage: Int) {
+fun ImageView.loadUrl(url: String, placeHolder: Int = R.drawable.ic_placeholder, errorImage: Int = R.drawable.ic_not_found) {
     Glide.with(context).load(url)
         .placeholder(placeHolder)
         .error(errorImage)
-        .into(this)
-}
-
-fun ImageView.loadUrl(url: String) {
-    Glide.with(context)
-        .load(url)
         .centerCrop()
         .into(this)
 }
