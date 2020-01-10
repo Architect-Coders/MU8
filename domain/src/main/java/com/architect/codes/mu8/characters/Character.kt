@@ -7,5 +7,6 @@ data class Character(
     val name: String,
     val description: String,
     val thumbnailUrl: String,
-    val urls: List<Urls>
+    val urls: List<Urls> = emptyList(),
+    val comicIds: List<String> = emptyList()
 )
