@@ -15,7 +15,7 @@ private const val OFFSET = "offset"
 private const val LIMIT = "limit"
 
 /**
- * All marvel API Calls requires {@Link [TIME_STAMP]}, {@Link[API_KEY]}, and {@Link [HASH] }
+ * All marvel API Calls requires {@Link [TIME_STAMP]}, {@Link[API_KEY]}, and {@Link [HASH]}
  */
 interface MarvelServiceAPI {
 

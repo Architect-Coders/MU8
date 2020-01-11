@@ -6,6 +6,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.data.events.EventsMapper
 import com.architect.coders.mu8.data.events.EventsRepositoryImpl
-import com.architect.coders.mu8.events.EventsUiModel.Contect
-import com.architect.coders.mu8.events.EventsUiModel.Loading
+import com.architect.coders.mu8.events.EventsUiModel.*
 import com.architect.coders.mu8.utils.getViewModel
 import com.architect.codes.mu8.events.EventsUserCaseImpl
 
@@ -38,7 +38,7 @@ class EventsActivity : AppCompatActivity() {
 
         viewModel = getViewModel { EventsViewModel(EventsUserCaseImpl(EventsRepositoryImpl(EventsMapper()))) }
 
-        adapter = EventsAdapter()
+        adapter = EventsAdapter(viewModel::onEventClick)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -49,9 +49,8 @@ class EventsActivity : AppCompatActivity() {
         progress.visibility = if (model == Loading) VISIBLE else GONE
 
         when (model) {
-            is Contect -> {
-                adapter.events = model.events
-            }
+            is Contect -> adapter.events = model.events
+            is Navegation -> Toast.makeText(this, model.event.title, Toast.LENGTH_LONG).show()
         }
     }
 }
