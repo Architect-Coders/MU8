@@ -16,9 +16,7 @@ import com.architect.coders.mu8.characters.CharactersUiModel.Loading
 import com.architect.coders.mu8.characters.CharactersUiModel.Navigation
 import com.architect.coders.mu8.characters.detail.CharactersDetailActivity
 import com.architect.coders.mu8.data.DataApp
-import com.architect.coders.mu8.data.characters.CharactersMapper
 import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
-import com.architect.coders.mu8.data.mapper.common.UrlsMapper
 import com.architect.coders.mu8.utils.getViewModel
 import com.architect.coders.mu8.utils.startActivity
 import com.architect.codes.mu8.characters.CharactersUseCaseImpl
@@ -42,13 +40,7 @@ class CharactersActivity : AppCompatActivity() {
         val toolbarTitle = findViewById<TextView>(R.id.toolbar_title)
         toolbarTitle.text = getString(R.string.characters_name)
 
-        viewModel = getViewModel {
-            CharactersViewModel(
-                CharactersUseCaseImpl(
-                    CharactersRepositoryImpl(CharactersMapper(UrlsMapper()), application as DataApp)
-                )
-            )
-        }
+        viewModel = getViewModel { CharactersViewModel(CharactersUseCaseImpl(CharactersRepositoryImpl(application as DataApp))) }
 
         adapter = CharactersAdapter(viewModel::onCharacterClicked)
         recycler.layoutManager = LinearLayoutManager(this)

@@ -39,7 +39,7 @@ class CategoriesAdapter(
 
         fun showData(category: Category) {
             categoryTitle.text = category.title
-            categoryImage.loadUrl(category.image, R.drawable.logo_marvel, R.drawable.error_image)
+            categoryImage.loadUrl(category.image)
         }
     }
 }

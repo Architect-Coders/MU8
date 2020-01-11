@@ -36,7 +36,7 @@ class ComicsAdapter(private val listener: (Comic) -> Unit) : RecyclerView.Adapte
         private var comicTitle: TextView = itemView.findViewById(R.id.comic_item_title)
 
         fun onBindComic(item: Comic) {
-            comicImage.loadUrl(item.thumbnailUrl, R.drawable.logo_marvel, R.drawable.error_image)
+            comicImage.loadUrl(item.thumbnailUrl)
             comicTitle.text = item.title
         }
     }
