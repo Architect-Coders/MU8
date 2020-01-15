@@ -1,6 +1,8 @@
 package com.architect.coders.mu8.data.events
 
 import com.architect.coders.mu8.data.service.MarvelServiceManager
+import com.architect.coders.mu8.data.utils.DEFAULT_OFFSET
+import com.architect.coders.mu8.data.utils.LIMIT
 import com.architect.coders.mu8.data.utils.MARVEL_PUBLIC_KEY
 import com.architect.coders.mu8.data.utils.TIME_STAMP
 import com.architect.codes.mu8.events.Event
@@ -11,7 +13,9 @@ class EventsRepositoryImpl(private val mapper: EventsMapper) : EventsRepository 
     override suspend fun invoke(): List<Event> {
         val response = MarvelServiceManager.service.getAllEvents(
             TIME_STAMP, MARVEL_PUBLIC_KEY,
-            MarvelServiceManager.hashcode
+            MarvelServiceManager.hashcode,
+            DEFAULT_OFFSET,
+            LIMIT
         )
 
         val events = mutableListOf<Event>()

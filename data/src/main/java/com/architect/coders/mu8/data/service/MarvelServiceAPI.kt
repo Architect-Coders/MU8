@@ -41,6 +41,8 @@ interface MarvelServiceAPI {
     suspend fun getAllEvents(
         @Query(TIME_STAMP) timeStamp: String,
         @Query(API_KEY) apiKey: String,
-        @Query(HASH) hash: String
+        @Query(HASH) hash: String,
+        @Query(OFFSET) offset: Int,
+        @Query(LIMIT) limit: Int
     ): Response<BaseResponse<EventsResponse>>
 }

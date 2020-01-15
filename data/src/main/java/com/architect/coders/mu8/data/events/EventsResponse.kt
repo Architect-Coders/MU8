@@ -7,5 +7,5 @@ data class EventsResponse(
     val id: Long = 0L,
     val title: String = EMPTY_STRING,
     val description: String = EMPTY_STRING,
-    val thumbnail: ThumbnailResponse
+    val thumbnail: ThumbnailResponse = ThumbnailResponse()
 )
