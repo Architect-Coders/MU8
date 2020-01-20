@@ -3,6 +3,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 apply from: "$rootDir/detekt.gradle"
 
 android {
@@ -26,6 +27,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(":domain")
     implementation project(":data")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -33,6 +35,8 @@ dependencies {
     implementation KotlinDependencies.kotlinStdLib
 
     implementation JetPackDependencies.lifecycle
+    implementation JetPackDependencies.navigationFragment
+    implementation JetPackDependencies.navigationUi
 
     implementation SupportDependencies.coreKtx
     implementation SupportDependencies.appCompat
