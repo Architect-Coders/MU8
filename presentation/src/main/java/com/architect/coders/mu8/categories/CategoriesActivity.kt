@@ -13,6 +13,7 @@ import com.architect.coders.mu8.categories.CategoriesViewModel.UiModel
 import com.architect.coders.mu8.characters.CharactersActivity
 import com.architect.coders.mu8.comics.ComicsActivity
 import com.architect.coders.mu8.data.categories.CategoriesRepository
+import com.architect.coders.mu8.events.EventsActivity
 import com.architect.coders.mu8.utils.getViewModel
 import com.architect.coders.mu8.utils.startActivity
 import com.architect.codes.mu8.utils.CHARACTERS
@@ -60,7 +61,7 @@ class CategoriesActivity : AppCompatActivity() {
                 when (model.categoryName) {
                     CHARACTERS -> startActivity<CharactersActivity> {}
                     COMICS -> startActivity<ComicsActivity> {}
-                    EVENTS -> Toast.makeText(this, EVENTS, Toast.LENGTH_SHORT).show()
+                    EVENTS -> startActivity<EventsActivity> {}
                     else -> Toast.makeText(this, NOT_FOUND, Toast.LENGTH_SHORT).show()
                 }
             }
