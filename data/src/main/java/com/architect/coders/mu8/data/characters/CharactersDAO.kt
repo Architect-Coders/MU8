@@ -8,10 +8,10 @@ import androidx.room.Query
 @Dao
 interface CharactersDAO {
 
-    @Query("SELECT * FROM CharactersEntity")
+    @Query(value = "SELECT * FROM CharactersEntity")
     fun getAllCharacters(): List<CharactersEntity>
 
-    @Query("SELECT COUNT(id) FROM CharactersEntity")
+    @Query(value = "SELECT COUNT(id) FROM CharactersEntity")
     fun charactersCount(): Int
 
     @Insert(onConflict = IGNORE)

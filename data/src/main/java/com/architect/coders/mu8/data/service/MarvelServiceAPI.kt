@@ -1,7 +1,8 @@
 package com.architect.coders.mu8.data.service
 
-import com.architect.coders.mu8.data.characters.CharactersEntity
+import com.architect.coders.mu8.data.characters.CharactersResponse
 import com.architect.coders.mu8.data.comics.ComicResponse
+import com.architect.coders.mu8.data.events.EventsResponse
 import com.architect.coders.mu8.data.response.BaseResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -22,7 +23,9 @@ interface MarvelServiceAPI {
     suspend fun getAllComics(
         @Query(TIME_STAMP) timeStamp: String,
         @Query(API_KEY) apiKey: String,
-        @Query(HASH) hash: String
+        @Query(HASH) hash: String,
+        @Query(OFFSET) offset: Int,
+        @Query(LIMIT) limit: Int
     ): Response<BaseResponse<ComicResponse>>
 
     @GET("/v1/public/characters")
@@ -32,5 +35,14 @@ interface MarvelServiceAPI {
         @Query(HASH) hash: String,
         @Query(OFFSET) offset: Int,
         @Query(LIMIT) limit: Int
-    ): Response<BaseResponse<CharactersEntity>>
+    ): Response<BaseResponse<CharactersResponse>>
+
+    @GET("/v1/public/events")
+    suspend fun getAllEvents(
+        @Query(TIME_STAMP) timeStamp: String,
+        @Query(API_KEY) apiKey: String,
+        @Query(HASH) hash: String,
+        @Query(OFFSET) offset: Int,
+        @Query(LIMIT) limit: Int
+    ): Response<BaseResponse<EventsResponse>>
 }

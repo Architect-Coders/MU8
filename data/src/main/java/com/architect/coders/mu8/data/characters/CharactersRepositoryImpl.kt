@@ -12,29 +12,21 @@ import com.architect.codes.mu8.characters.CharactersRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class CharactersRepositoryImpl(
-    private val mapper: CharactersMapper,
-    application: DataApp
-) : CharactersRepository {
+class CharactersRepositoryImpl(application: DataApp) : CharactersRepository {
 
     private val database = application.database
 
     override suspend fun invoke(): List<Character> = withContext(Dispatchers.IO) {
         with(database.getCharactersDao()) {
             if (charactersCount() <= 0) {
-                val response = service.getAllCharacters(
-                    TIME_STAMP,
-                    MARVEL_PUBLIC_KEY,
-                    hashcode,
-                    DEFAULT_OFFSET,
-                    LIMIT
-                )
-
+                val response = service.getAllCharacters(TIME_STAMP, MARVEL_PUBLIC_KEY, hashcode, DEFAULT_OFFSET, LIMIT)
                 if (response.isSuccessful) {
-                    response.body()?.data?.results?.run { insertCharacters(this) }
+                    response.body()?.data?.results?.run {
+                        map { it.toDatabaseEntity() }.also { insertCharacters(it) }
+                    }
                 }
             }
-            return@withContext getAllCharacters().map { mapper.transform(it) }
+            return@withContext getAllCharacters().map { it.toDomainEntity() }
         }
     }
 }

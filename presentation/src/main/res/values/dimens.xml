@@ -28,4 +28,8 @@
     <dimen name="dp_20">20dp</dimen>
     <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_150">150dp</dimen>
+    <dimen name="event_item_height">200dp</dimen>
+    <dimen name="event_item_text_margin">10dp</dimen>
+    <dimen name="event_item_elevation">5dp</dimen>
+    <dimen name="event_item_shadow_radius">50</dimen>
 </resources>
