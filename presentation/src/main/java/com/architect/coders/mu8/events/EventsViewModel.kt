@@ -3,7 +3,7 @@ package com.architect.coders.mu8.events
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.events.EventsUiModel.Navegation
-import com.architect.coders.mu8.utils.ScopedViewModel
+import com.architect.coders.mu8.common.ScopedViewModel
 import com.architect.codes.mu8.events.Event
 import com.architect.codes.mu8.events.EventsUseCase
 import kotlinx.coroutines.launch

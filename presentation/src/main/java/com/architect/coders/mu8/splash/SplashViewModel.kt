@@ -3,7 +3,7 @@ package com.architect.coders.mu8.splash
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.BuildConfig
-import com.architect.coders.mu8.utils.ScopedViewModel
+import com.architect.coders.mu8.common.ScopedViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

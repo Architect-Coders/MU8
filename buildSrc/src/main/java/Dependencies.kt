@@ -22,7 +22,6 @@ object Versions {
     internal const val testJunit = "1.1.1"
     internal const val robolectric = "4.3.1"
     internal const val coroutinesTest = "1.2.1"
-    internal const val lifecycleVersion = "2.1.0"
     internal const val firebaseAnalytics = "17.2.0"
     internal const val crashlytics = "2.10.1"
     internal const val googleService = "4.3.2"
@@ -30,14 +29,24 @@ object Versions {
     internal const val materialVersion = "1.0.0"
     internal const val cardView = "28.0.0"
     internal const val roomVersion = "2.2.3"
-}
 
-object GradleDependencies {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
+    // Jetpack
+    internal const val lifecycleVersion = "2.1.0"
+    internal const val navigationVersion = "2.1.0"
 }
 
 object JetPackDependencies {
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleVersion}"
+    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigationVersion}"
+    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
+}
+
+object ClasspathDependencies {
+    const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
+    const val fabricTools = "io.fabric.tools:gradle:${Versions.fabricTools}"
+    const val googleService = "com.google.gms:google-services:${Versions.googleService}"
+    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationVersion}"
 }
 
 object SupportDependencies {
@@ -49,13 +58,10 @@ object SupportDependencies {
     const val cardView = "com.android.support:cardview-v7:${Versions.cardView}"
     const val firebaseAnalytics = "com.google.firebase:firebase-analytics:${Versions.firebaseAnalytics}"
     const val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
-    const val fabricTools = "io.fabric.tools:gradle:${Versions.fabricTools}"
-    const val googleService = "com.google.gms:google-services:${Versions.googleService}"
 }
 
 object KotlinDependencies {
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
-    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 }
 

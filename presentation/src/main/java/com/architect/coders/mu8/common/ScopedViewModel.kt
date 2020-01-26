@@ -1,4 +1,4 @@
-package com.architect.coders.mu8.utils
+package com.architect.coders.mu8.common
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel

@@ -2,7 +2,7 @@ package com.architect.coders.mu8.characters
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.architect.coders.mu8.utils.ScopedViewModel
+import com.architect.coders.mu8.common.ScopedViewModel
 import com.architect.codes.mu8.characters.Character
 import com.architect.codes.mu8.characters.CharactersUseCase
 import kotlinx.coroutines.launch
@@ -23,5 +23,7 @@ class CharactersViewModel(private val charactersUseCase: CharactersUseCase) : Sc
         }
     }
 
-    fun onCharacterClicked(character: Character) = Unit
+    fun onCharacterClicked(character: Character) {
+        _model.value = CharactersUiModel.Navigation(character)
+    }
 }

@@ -3,7 +3,7 @@ package com.architect.coders.mu8.comics
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.comics.ComicsViewModel.UiModel.*
-import com.architect.coders.mu8.utils.ScopedViewModel
+import com.architect.coders.mu8.common.ScopedViewModel
 import com.architect.codes.mu8.comics.ComicUseCase
 import com.architect.codes.mu8.comics.Comic
 import kotlinx.coroutines.launch
