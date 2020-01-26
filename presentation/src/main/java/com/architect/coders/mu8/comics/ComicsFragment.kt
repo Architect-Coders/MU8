@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.architect.coders.mu8.R
-import com.architect.coders.mu8.StartingNavHostActivity
+import com.architect.coders.mu8.common.NavigationFragment
+import com.architect.coders.mu8.common.StartingNavHostActivity
 import com.architect.coders.mu8.data.comics.ComicRepositoryImpl
 import com.architect.coders.mu8.data.comics.ComicsMapper
 import com.architect.coders.mu8.utils.getViewModel
@@ -22,14 +22,15 @@ import com.architect.coders.mu8.utils.makeItVisible
 import com.architect.codes.mu8.comics.ComicsUseCaseImpl
 import com.google.android.material.snackbar.Snackbar
 
-class ComicsFragment : Fragment() {
+class ComicsFragment : NavigationFragment(R.id.action_comicsFragment_to_categoriesFragment) {
 
     private lateinit var recycler: RecyclerView
     private lateinit var progress: ProgressBar
 
     private lateinit var viewModel: ComicsViewModel
     private lateinit var adapter: ComicsAdapter
-    private lateinit var navController: NavController
+
+    private lateinit var navigationController: NavController
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_loader_list, container, false)
@@ -40,7 +41,7 @@ class ComicsFragment : Fragment() {
         navHostActivity.showToolbar()
         navHostActivity.setToolbarTitle(getString(R.string.comics_name))
 
-        navController = view.findNavController()
+        navigationController = view.findNavController()
 
         viewModel = getViewModel {
             ComicsViewModel(

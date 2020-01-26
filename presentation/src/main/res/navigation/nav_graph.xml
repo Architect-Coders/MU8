@@ -10,30 +10,68 @@
         android:label="SplashFragment">
         <action
             android:id="@+id/action_splashFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
+            app:destination="@id/categoriesFragment"
+            app:popUpTo="@id/categoriesFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.architect.coders.mu8.categories.CategoriesFragment"
-        android:label="CategoriesFragment" >
+        android:label="CategoriesFragment">
         <action
             android:id="@+id/action_categoriesFragment_to_charactersFragment"
             app:destination="@id/charactersFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_categoriesFragment_to_comicsFragment"
-            app:destination="@id/comicsFragment" />
+            app:destination="@id/comicsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_categoriesFragment_to_eventsFragment"
+            app:destination="@id/eventsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"/>
     </fragment>
+
     <fragment
         android:id="@+id/charactersFragment"
         android:name="com.architect.coders.mu8.characters.CharactersFragment"
-        android:label="CharactersFragment" />
+        android:label="CharactersFragment">
+        <action
+            android:id="@+id/action_charactersFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment"
+            app:popUpTo="@id/categoriesFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
     <fragment
         android:id="@+id/comicsFragment"
         android:name="com.architect.coders.mu8.comics.ComicsFragment"
-        android:label="ComicsFragment" />
+        android:label="ComicsFragment" >
+        <action
+            android:id="@+id/action_comicsFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment"
+            app:popUpTo="@id/categoriesFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.architect.coders.mu8.events.EventsFragment"
+        android:label="EventsFragment" >
+        <action
+            android:id="@+id/action_eventsFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment"
+            app:popUpTo="@id/categoriesFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

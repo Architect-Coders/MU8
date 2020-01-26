@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.architect.coders.mu8.R
-import com.architect.coders.mu8.StartingNavHostActivity
+import com.architect.coders.mu8.common.StartingNavHostActivity
 import com.architect.coders.mu8.utils.getViewModel
 
 class SplashFragment : Fragment() {

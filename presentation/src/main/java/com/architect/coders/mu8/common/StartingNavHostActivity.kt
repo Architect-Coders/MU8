@@ -1,4 +1,4 @@
-package com.architect.coders.mu8
+package com.architect.coders.mu8.common
 
 import android.os.Bundle
 import android.view.View.GONE
@@ -6,6 +6,7 @@ import android.view.View.VISIBLE
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.architect.coders.mu8.R
 
 class StartingNavHostActivity : AppCompatActivity() {
 

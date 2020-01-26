@@ -1,8 +1,10 @@
-package com.architect.coders.mu8.characters
+package com.architect.coders.mu8.events
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -14,18 +16,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.common.NavigationFragment
 import com.architect.coders.mu8.common.StartingNavHostActivity
-import com.architect.coders.mu8.data.DataApp
-import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
+import com.architect.coders.mu8.data.events.EventsMapper
+import com.architect.coders.mu8.data.events.EventsRepositoryImpl
+import com.architect.coders.mu8.events.EventsUiModel.Contect
+import com.architect.coders.mu8.events.EventsUiModel.Loading
+import com.architect.coders.mu8.events.EventsUiModel.Navegation
 import com.architect.coders.mu8.utils.getViewModel
-import com.architect.codes.mu8.characters.CharactersUseCaseImpl
+import com.architect.codes.mu8.events.EventsUserCaseImpl
 
-class CharactersFragment : NavigationFragment(R.id.action_charactersFragment_to_categoriesFragment) {
+class EventsFragment : NavigationFragment(R.id.action_eventsFragment_to_categoriesFragment) {
 
     private lateinit var recycler: RecyclerView
     private lateinit var progress: ProgressBar
 
-    private lateinit var viewModel: CharactersViewModel
-    private lateinit var adapter: CharactersAdapter
+    private lateinit var viewModel: EventsViewModel
+    private lateinit var adapter: EventsAdapter
 
     private lateinit var navigationController: NavController
 
@@ -35,15 +40,13 @@ class CharactersFragment : NavigationFragment(R.id.action_charactersFragment_to_
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val navHostActivity = activity as StartingNavHostActivity
-        navHostActivity.setToolbarTitle(getString(R.string.characters_name))
+        navHostActivity.setToolbarTitle(getString(R.string.events_name))
 
         navigationController = view.findNavController()
 
-        viewModel = getViewModel {
-            CharactersViewModel(CharactersUseCaseImpl(CharactersRepositoryImpl(navHostActivity.application as DataApp)))
-        }
+        viewModel = getViewModel { EventsViewModel(EventsUserCaseImpl(EventsRepositoryImpl(EventsMapper()))) }
 
-        adapter = CharactersAdapter(viewModel::onCharacterClicked)
+        adapter = EventsAdapter(viewModel::onEventClick)
 
         progress = view.findViewById(R.id.progress)
 
@@ -54,17 +57,14 @@ class CharactersFragment : NavigationFragment(R.id.action_charactersFragment_to_
         viewModel.model.observe(this, Observer(::updateUi))
     }
 
-    private fun updateUi(model: CharactersUiModel) {
+    private fun updateUi(model: EventsUiModel) {
         val context = this.context ?: return
 
-        progress.visibility = if (model == CharactersUiModel.Loading) View.VISIBLE else View.GONE
+        progress.visibility = if (model == Loading) VISIBLE else GONE
 
         when (model) {
-            is CharactersUiModel.Content -> {
-                adapter.characters = model.characters
-                progress.visibility = View.GONE
-            }
-            is CharactersUiModel.Navigation -> Toast.makeText(context, model.character.name, Toast.LENGTH_LONG).show()
+            is Contect -> adapter.events = model.events
+            is Navegation -> Toast.makeText(context, model.event.title, Toast.LENGTH_LONG).show()
         }
     }
 }

@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".StartingNavHostActivity">
+        <activity android:name=".common.StartingNavHostActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,6 +23,5 @@
         </activity>
 
         <activity android:name=".characters.detail.CharactersDetailActivity" />
-        <activity android:name=".events.EventsActivity"/>
     </application>
 </manifest>
