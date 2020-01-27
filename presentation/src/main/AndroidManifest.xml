@@ -25,6 +25,7 @@
         <activity android:name=".categories.CategoriesActivity" />
         <activity android:name=".characters.CharactersActivity" />
         <activity android:name=".characters.detail.CharactersDetailActivity" />
+        <activity android:name=".events.EventsActivity"/>
     </application>
 
 </manifest>
