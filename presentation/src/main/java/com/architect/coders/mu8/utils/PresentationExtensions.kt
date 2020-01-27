@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,25 +18,24 @@ import androidx.lifecycle.ViewModelProviders
 import com.architect.coders.mu8.R
 import com.bumptech.glide.Glide
 
-fun View.makeItGone() {
-    visibility = View.GONE
+fun Context.toast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun View.makeItVisible() {
-    visibility = View.VISIBLE
-}
-
-fun View.makeItInvisible() {
-    visibility = View.INVISIBLE
-}
-
-fun ImageView.loadUrl(url: String, placeHolder: Int = R.drawable.ic_placeholder, errorImage: Int = R.drawable.ic_not_found) {
+fun ImageView.loadUrl(
+    url: String,
+    placeHolder: Int = R.drawable.ic_placeholder,
+    errorImage: Int = R.drawable.ic_not_found
+) {
     Glide.with(context).load(url)
         .placeholder(placeHolder)
         .error(errorImage)
         .centerCrop()
         .into(this)
 }
+
+fun <T : ViewDataBinding> ViewGroup.bindingInflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): T =
+    DataBindingUtil.inflate(LayoutInflater.from(context), layoutRes, this, attachToRoot)
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)

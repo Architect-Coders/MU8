@@ -1,3 +1,9 @@
 package com.architect.codes.mu8.comics
 
-data class Comic(val id: Int, val title: String, val thumbnailUrl: String)
+import com.architect.codes.mu8.utils.EMPTY_STRING
+
+data class Comic(
+    val id: Int,
+    val title: String = EMPTY_STRING,
+    val thumbnailUrl: String = EMPTY_STRING
+)
