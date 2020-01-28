@@ -40,9 +40,7 @@ class CharactersActivity : AppCompatActivity() {
     }
 
     private fun initToolbar() {
-        setSupportActionBar(binding.toolbar.toolbarWidget)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        binding.toolbar.toolbarTitle.text = getString(R.string.characters_name)
+        viewModel.setTitle(getString(R.string.characters_name))
     }
 
     private fun initRecycler() {

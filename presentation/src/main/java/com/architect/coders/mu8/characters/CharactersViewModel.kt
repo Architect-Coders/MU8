@@ -19,6 +19,9 @@ class CharactersViewModel(private val charactersUseCase: CharactersUseCase) : Sc
     private val _characters = MutableLiveData<List<Character>>()
     val characters: LiveData<List<Character>> get() = _characters
 
+    private val _title = MutableLiveData<String>()
+    val title: LiveData<String> get() = _title
+
     init {
         getCharacters()
     }
@@ -33,5 +36,9 @@ class CharactersViewModel(private val charactersUseCase: CharactersUseCase) : Sc
 
     fun onCharacterClicked(character: Character) {
         _navigateToCharacter.value = Event(character.id)
+    }
+
+    fun setTitle(toolbarTitle: String) {
+        _title.value = toolbarTitle
     }
 }
