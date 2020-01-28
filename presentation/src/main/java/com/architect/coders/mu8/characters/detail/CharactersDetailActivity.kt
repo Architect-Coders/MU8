@@ -6,6 +6,8 @@ import com.architect.coders.mu8.R
 
 class CharactersDetailActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: CharactersDetailViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters_detail)

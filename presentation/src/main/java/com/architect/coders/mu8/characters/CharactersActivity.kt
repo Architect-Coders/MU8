@@ -57,7 +57,7 @@ class CharactersActivity : AppCompatActivity() {
                 adapter.characters = model.characters
                 progress.visibility = GONE
             }
-            is Navigation -> startActivity<CharactersDetailActivity> {}
+            //is Navigation -> startActivity<CharactersDetailActivity> {}
         }
     }
 }

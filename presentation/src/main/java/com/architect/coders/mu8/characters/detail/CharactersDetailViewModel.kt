@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 
 class CharactersDetailViewModel() : ViewModel() {
 
-    private val _model = MutableLiveData<CharactersDetailUiModel>()
-    val model: LiveData<CharactersDetailUiModel>
-        get() {
-            return _model
-        }
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> get() = _loading
+
+
 }
