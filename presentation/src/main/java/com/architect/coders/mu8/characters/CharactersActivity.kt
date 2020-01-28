@@ -19,37 +19,43 @@ class CharactersActivity : AppCompatActivity() {
 
     private lateinit var viewModel: CharactersViewModel
     private lateinit var adapter: CharactersAdapter
+    private lateinit var binding: ActivityCharactersBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityCharactersBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_characters)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_characters)
 
+        initViewModel()
+        initToolbar()
+        initRecycler()
+
+        viewModel.navigateToCharacter.observe(this, EventObserver { startActivity<CharactersDetailActivity> {} })
+    }
+
+    private fun initViewModel() {
         viewModel = getViewModel { CharactersViewModel(CharactersUseCaseImpl(CharactersRepositoryImpl(application as DataApp))) }
-
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
+    }
 
+    private fun initToolbar() {
         setSupportActionBar(binding.toolbar.toolbarWidget)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.toolbar.toolbarTitle.text = getString(R.string.characters_name)
+    }
 
+    private fun initRecycler() {
         adapter = CharactersAdapter(viewModel::onCharacterClicked)
         binding.recycler.layoutManager = LinearLayoutManager(this)
         binding.recycler.adapter = adapter
 
-        with(viewModel.characters){
+        with(viewModel.characters) {
             observe(this@CharactersActivity, Observer {
                 value?.let {
                     adapter.characters = it
                 }
             })
         }
-
-        viewModel.navigateToCharacter.observe(
-            this,
-            EventObserver { startActivity<CharactersDetailActivity> {} }
-        )
     }
 }

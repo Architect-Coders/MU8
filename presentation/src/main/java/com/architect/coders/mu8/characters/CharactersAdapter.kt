@@ -1,14 +1,10 @@
 package com.architect.coders.mu8.characters
 
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.databinding.ViewCharacterBinding
 import com.architect.coders.mu8.utils.bindingInflate
-import com.architect.coders.mu8.utils.inflate
 import com.architect.coders.mu8.utils.loadUrl
 import com.architect.codes.mu8.characters.Character
 import kotlin.properties.Delegates
@@ -21,7 +17,7 @@ class CharactersAdapter(private val listener: (Character) -> Unit) : RecyclerVie
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-         ViewHolder(parent.bindingInflate(R.layout.view_character, false))
+        ViewHolder(parent.bindingInflate(R.layout.view_character, false))
 
     override fun getItemCount(): Int = characters.size
 

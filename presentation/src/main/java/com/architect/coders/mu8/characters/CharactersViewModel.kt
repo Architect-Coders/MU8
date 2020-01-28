@@ -1,8 +1,5 @@
 package com.architect.coders.mu8.characters
 
-import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.utils.Event
