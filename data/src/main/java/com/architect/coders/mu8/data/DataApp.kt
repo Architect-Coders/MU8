@@ -15,6 +15,8 @@ open class DataApp : Application() {
             this,
             MU8Database::class.java,
             "MU8-db"
-        ).fallbackToDestructiveMigration().build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }
