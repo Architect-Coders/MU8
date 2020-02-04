@@ -45,24 +45,35 @@ class ComicsActivity : AppCompatActivity() {
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
 
+        configureToolbar()
+
+        configureRecycler()
+
+        observerViewModel()
+    }
+
+    private fun configureToolbar() {
         toolbar = findViewById(R.id.comic_activity_toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         toolbarTitle = findViewById(R.id.toolbar_title)
         toolbarTitle.text = getString(R.string.comics_name)
+    }
 
+    private fun configureRecycler() {
         adapter = ComicsAdapter(viewModel::onComicClicked)
         recycler.layoutManager = GridLayoutManager(this, GRID_COLUMS)
         recycler.adapter = adapter
+    }
 
+    private fun observerViewModel() {
         viewModel.comics.observe(this, Observer(::showComics))
         viewModel.messageError.observe(this, Observer(::showMessages))
         viewModel.navegateTo.observe(this, EventObserver { comic ->
             toast(comic.title)
         })
     }
-
 
     private fun showComics(comics: List<Comic>) {
         adapter.comics = comics
