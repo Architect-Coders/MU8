@@ -30,7 +30,9 @@ class CharactersActivity : AppCompatActivity() {
         initToolbar()
         initRecycler()
 
-        viewModel.navigateToCharacter.observe(this, EventObserver { startActivity<CharactersDetailActivity> {} })
+        viewModel.navigateToCharacter.observe(this, EventObserver { startActivity<CharactersDetailActivity> {
+            putExtra(CharactersDetailActivity.CHARACTER, it)
+        } })
     }
 
     private fun initViewModel() {
