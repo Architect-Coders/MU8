@@ -1,6 +1,5 @@
 package com.architect.coders.mu8.data.comics
 
-
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
