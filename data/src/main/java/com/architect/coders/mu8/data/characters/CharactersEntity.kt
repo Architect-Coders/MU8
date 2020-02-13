@@ -3,7 +3,7 @@ package com.architect.coders.mu8.data.characters
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.architect.coders.mu8.data.response.common.UrlsResponse
-import com.architect.coders.mu8.data.response.common.toDomainEntity
+import com.architect.coders.mu8.data.response.common.toDomainModel
 import com.architect.codes.mu8.characters.Character
 import com.architect.codes.mu8.utils.EMPTY_STRING
 
@@ -17,4 +17,11 @@ data class CharactersEntity(
     val comicIds: List<String> = emptyList()
 )
 
-fun CharactersEntity.toDomainEntity() = Character(id, name, description, thumbnailUrl, urls.map { it.toDomainEntity() }, comicIds)
+fun CharactersEntity.toDomainModel() = Character(
+    id = id,
+    name = name,
+    description = description,
+    thumbnailUrl = thumbnailUrl,
+    urls = urls.map { it.toDomainModel() },
+    comicIds = comicIds
+)

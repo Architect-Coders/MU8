@@ -14,8 +14,8 @@ import com.architect.coders.mu8.comics.ComicsViewModel.UiModel.InternetError
 import com.architect.coders.mu8.comics.ComicsViewModel.UiModel.LoadData
 import com.architect.coders.mu8.comics.ComicsViewModel.UiModel.NavigateTo
 import com.architect.coders.mu8.comics.ComicsViewModel.UiModel.ShowLoading
+import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.data.comics.ComicRepositoryImpl
-import com.architect.coders.mu8.data.comics.ComicsMapper
 import com.architect.coders.mu8.utils.getViewModel
 import com.architect.coders.mu8.utils.makeItGone
 import com.architect.coders.mu8.utils.makeItVisible
@@ -46,7 +46,7 @@ class ComicsActivity : AppCompatActivity() {
         viewModel = getViewModel {
             ComicsViewModel(
                 ComicsUseCaseImpl(
-                    ComicRepositoryImpl(ComicsMapper())
+                    ComicRepositoryImpl(application as DataApp)
                 )
             )
         }
