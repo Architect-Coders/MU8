@@ -29,4 +29,18 @@ class CharactersRepositoryImpl(application: DataApp) : CharactersRepository {
             return@withContext getAllCharacters().map { it.toDomainModel() }
         }
     }
+
+    override suspend fun findCharacter(id: Long): Character = withContext(Dispatchers.IO) {
+        with(database.getCharactersDao()) {
+            if (charactersCount() <= 0) {
+                val response = service.findById(TIME_STAMP, MARVEL_PUBLIC_KEY, hashcode, id)
+                if (response.isSuccessful) {
+                    response.body()?.data?.results?.run {
+                        map { it.toDatabaseEntity() }.also { insertCharacters(it) }
+                    }
+                }
+            }
+            return@withContext findbyId(id).toDomainModel()
+        }
+    }
 }

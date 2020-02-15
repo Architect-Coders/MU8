@@ -1,8 +1,8 @@
 package com.architect.codes.mu8.charactersDetail
 
-import com.architect.codes.mu8.characters.Character
+import com.architect.codes.mu8.comics.Comic
 
 interface CharacterDetailRepository {
 
-    suspend fun invoke(id: Long): Character
+    suspend fun getComicsForCharacter(id: Long, idComics: List<String>): List<Comic>
 }

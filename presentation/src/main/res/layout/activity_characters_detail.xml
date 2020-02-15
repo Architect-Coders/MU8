@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.architect.coders.mu8.characters.detail.CharactersDetailViewModel" />
@@ -15,9 +16,26 @@
         android:layout_height="match_parent"
         tools:context=".characters.detail.CharactersDetailActivity">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{viewmodel.character.name}"
+                android:textColor="@android:color/white" />
+        </androidx.appcompat.widget.Toolbar>
 
         <ProgressBar
             android:id="@+id/progress"
@@ -26,47 +44,39 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_widget"
             app:visible="@{viewmodel.loading}" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-        <TextView
-            android:id="@+id/tv_title"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
-            android:layout_marginStart="@dimen/dp_14"
-            android:layout_marginEnd="@dimen/dp_14"
-            android:gravity="center"
-            android:textSize="@dimen/sp_22"
+            android:layout_height="@dimen/dp_250"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            android:text="@{viewmodel.detailCharacter.name}"/>
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_widget"
+            app:url="@{viewmodel.character.thumbnailUrl}" />
 
         <TextView
             android:id="@+id/tv_detail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
             android:layout_marginTop="@dimen/dp_10"
-            android:layout_marginStart="@dimen/dp_14"
             android:layout_marginEnd="@dimen/dp_14"
+            android:text="@{viewmodel.character.description}"
             android:textSize="@dimen/sp_14"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            android:text="@{viewmodel.detailCharacter.description}"/>
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
+            android:id="@+id/recycler_comic"
+            android:layout_width="0dp"
             android:layout_height="@dimen/dp_200"
+            android:layout_marginStart="@dimen/margin_14"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/margin_14"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_detail" />

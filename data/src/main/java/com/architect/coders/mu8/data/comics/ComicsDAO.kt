@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.IGNORE
 import androidx.room.Query
+import com.architect.codes.mu8.comics.Comic
 
 @Dao
 interface ComicsDAO {
@@ -18,4 +19,7 @@ interface ComicsDAO {
 
     @Query("SELECT characters_id FROM comics_table WHERE id = :comicId")
     fun getComicCharacters(comicId: Long): List<String>
+
+    @Query("SELECT * FROM comics_table WHERE id IN (:comicsId)")
+    fun getListComicCharacter(comicsId: List<String>): List<ComicsEntity>
 }

@@ -55,4 +55,14 @@ interface MarvelServiceAPI {
         @Query(HASH) hash: String,
         @Path(CHARACTER_ID) characterId: Long
     ): Response<BaseResponse<CharactersResponse>>
+
+    @GET("/v1/public/characters/{characterId}/comics")
+    suspend fun getComicsForCharacter(
+        @Path(CHARACTER_ID) characterId: Long,
+        @Query(TIME_STAMP) timeStamp: String,
+        @Query(API_KEY) apiKey: String,
+        @Query(HASH) hash: String,
+        @Query(OFFSET) offset: Int,
+        @Query(LIMIT) limit: Int
+    ): Response<BaseResponse<ComicResponse>>
 }
