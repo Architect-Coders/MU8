@@ -17,9 +17,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.architect.coders.mu8.R
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+fun View.snackbar(message: String) {
+    Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
 }
 
 fun ImageView.loadUrl(

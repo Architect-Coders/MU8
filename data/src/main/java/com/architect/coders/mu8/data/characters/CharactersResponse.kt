@@ -16,8 +16,12 @@ data class CharactersResponse(
 )
 
 fun CharactersResponse.toDatabaseEntity() = CharactersEntity(
-    id, name, description, "${thumbnail.path}.${thumbnail.extension}".replaceHttps(), urls,
-    comics.items.filter { comic ->
+    id = id,
+    name = name,
+    description = description,
+    thumbnailUrl = "${thumbnail.path}.${thumbnail.extension}".replaceHttps(),
+    urls = urls,
+    comicIds = comics.items.filter { comic ->
         comic.resourceURI.contains(COMICS_REGEX)
     }.map { comics ->
         comics.resourceURI.substringAfter(delimiter = COMICS_REGEX)
