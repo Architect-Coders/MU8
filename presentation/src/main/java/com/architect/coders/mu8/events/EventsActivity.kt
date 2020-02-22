@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.architect.coders.mu8.R
+import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.data.events.EventsMapper
 import com.architect.coders.mu8.data.events.EventsRepositoryImpl
 import com.architect.coders.mu8.events.EventsUiModel.*
@@ -36,7 +37,7 @@ class EventsActivity : AppCompatActivity() {
         val toolbarTitle = findViewById<TextView>(R.id.toolbar_title)
         toolbarTitle.text = getString(R.string.events_name)
 
-        viewModel = getViewModel { EventsViewModel(EventsUserCaseImpl(EventsRepositoryImpl(EventsMapper()))) }
+        viewModel = getViewModel { EventsViewModel(EventsUserCaseImpl(EventsRepositoryImpl(application as DataApp))) }
 
         adapter = EventsAdapter(viewModel::onEventClick)
         recyclerView.layoutManager = LinearLayoutManager(this)
