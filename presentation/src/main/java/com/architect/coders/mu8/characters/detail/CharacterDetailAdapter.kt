@@ -9,11 +9,11 @@ import com.architect.coders.mu8.utils.loadUrl
 import com.architect.codes.mu8.comics.Comic
 import kotlin.properties.Delegates
 
-class CharacterDetailAdapter(private val listener: (Comic) -> Unit): RecyclerView.Adapter<CharacterDetailAdapter.ViewHolder>() {
+class CharacterDetailAdapter(private val listener: (Comic) -> Unit) : RecyclerView.Adapter<CharacterDetailAdapter.ViewHolder>() {
 
     var comics: List<Comic> by Delegates.observable(
         emptyList(),
-        {_, _, _ ->notifyDataSetChanged()}
+        { _, _, _ -> notifyDataSetChanged() }
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
