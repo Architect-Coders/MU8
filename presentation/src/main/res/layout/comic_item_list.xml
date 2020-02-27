@@ -1,38 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/mine_shaft"
-    android:paddingBottom="@dimen/dp_4">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/comic_item_image"
-        android:layout_width="@dimen/dp_150"
-        android:layout_height="@dimen/dp_150"
-        android:layout_marginLeft="@dimen/dp_4"
-        android:layout_marginRight="@dimen/dp_4"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="@integer/float_0_5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="@integer/float_0_5"
-        tools:layout_height="@dimen/dp_150"
-        tools:layout_width="@dimen/dp_150"
-        tools:src="@tools:sample/avatars" />
+    <data>
+        <variable
+            name="comic"
+            type="com.architect.codes.mu8.comics.Comic" />
+    </data>
 
-    <TextView
-        android:id="@+id/comic_item_title"
-        android:layout_width="@dimen/dp_0"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_8"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/comic_item_image"
-        app:layout_constraintStart_toStartOf="@+id/comic_item_image"
-        app:layout_constraintTop_toBottomOf="@id/comic_item_image"
-        tools:text="Ghost-Spider #4" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@color/mine_shaft"
+        android:paddingBottom="@dimen/dp_4">
+
+        <ImageView
+            android:id="@+id/comic_item_image"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_150"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_marginRight="@dimen/dp_4"
+            android:scaleType="centerCrop"
+            app:url="@{comic.thumbnailUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="@integer/float_0_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="@integer/float_0_5"
+            tools:layout_height="@dimen/dp_150"
+            tools:layout_width="@dimen/dp_150"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/comic_item_title"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/comic_item_image"
+            app:layout_constraintStart_toStartOf="@+id/comic_item_image"
+            app:layout_constraintTop_toBottomOf="@id/comic_item_image"
+            tools:text="@{comic.title}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

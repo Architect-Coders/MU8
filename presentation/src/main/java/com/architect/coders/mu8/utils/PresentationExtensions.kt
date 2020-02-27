@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -16,26 +17,30 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.architect.coders.mu8.R
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 
-fun View.makeItGone() {
-    visibility = View.GONE
+fun Context.toast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun View.makeItVisible() {
-    visibility = View.VISIBLE
+fun View.snackbar(message: String) {
+    Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
 }
 
-fun View.makeItInvisible() {
-    visibility = View.INVISIBLE
-}
-
-fun ImageView.loadUrl(url: String, placeHolder: Int = R.drawable.ic_placeholder, errorImage: Int = R.drawable.ic_not_found) {
+fun ImageView.loadUrl(
+    url: String,
+    placeHolder: Int = R.drawable.ic_placeholder,
+    errorImage: Int = R.drawable.ic_not_found
+) {
     Glide.with(context).load(url)
         .placeholder(placeHolder)
         .error(errorImage)
         .centerCrop()
         .into(this)
 }
+
+fun <T : ViewDataBinding> ViewGroup.bindingInflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): T =
+    DataBindingUtil.inflate(LayoutInflater.from(context), layoutRes, this, attachToRoot)
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
@@ -59,6 +64,3 @@ inline fun <reified T : ViewModel> FragmentActivity.getViewModel(crossinline fac
     }
     return ViewModelProviders.of(this, vmFactory)[T::class.java]
 }
-
-fun <T : ViewDataBinding> ViewGroup.bindingInflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = true): T =
-    DataBindingUtil.inflate(LayoutInflater.from(context), layoutRes, this, attachToRoot)
