@@ -49,7 +49,7 @@ interface MarvelServiceAPI {
     ): Response<BaseResponse<EventsResponse>>
 
     @GET("/v1/public/characters/{characterId}")
-    suspend fun findById(
+    suspend fun findCharacterById(
         @Query(TIME_STAMP) timeStamp: String,
         @Query(API_KEY) apiKey: String,
         @Query(HASH) hash: String,

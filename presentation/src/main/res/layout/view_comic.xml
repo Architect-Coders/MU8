@@ -7,13 +7,12 @@
         <variable
             name="comic"
             type="com.architect.codes.mu8.comics.Comic" />
-
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/comic_item_image"
@@ -31,6 +30,5 @@
             tools:layout_height="@dimen/dp_150"
             tools:layout_width="@dimen/dp_150"
             tools:src="@tools:sample/avatars" />
-
     </LinearLayout>
 </layout>

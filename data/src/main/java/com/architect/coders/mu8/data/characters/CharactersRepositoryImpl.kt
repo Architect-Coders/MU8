@@ -33,7 +33,7 @@ class CharactersRepositoryImpl(application: DataApp) : CharactersRepository {
     override suspend fun findCharacter(id: Long): Character = withContext(Dispatchers.IO) {
         with(database.getCharactersDao()) {
             if (charactersCount() <= 0) {
-                val response = service.findById(TIME_STAMP, MARVEL_PUBLIC_KEY, hashcode, id)
+                val response = service.findCharacterById(TIME_STAMP, MARVEL_PUBLIC_KEY, hashcode, id)
                 if (response.isSuccessful) {
                     response.body()?.data?.results?.run {
                         map { it.toDatabaseEntity() }.also { insertCharacters(it) }

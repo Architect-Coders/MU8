@@ -17,6 +17,7 @@ import com.architect.codes.mu8.comics.Comic
 
 class CharactersDetailActivity : AppCompatActivity() {
 
+    private val DEFAULT_CHARATER_ID: Long = -1
     private lateinit var viewModel: CharactersDetailViewModel
     private lateinit var binding: ActivityCharactersDetailBinding
     private lateinit var adapter: CharacterDetailAdapter
@@ -25,7 +26,7 @@ class CharactersDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_characters_detail)
 
-        initVM(intent.getLongExtra(CHARACTER, -1))
+        initViewModel(intent.getLongExtra(CHARACTER, DEFAULT_CHARATER_ID))
         initRecycler()
         viewModel.comicsForCharacter.observe(this, Observer(::updateRecycler))
     }
@@ -40,7 +41,7 @@ class CharactersDetailActivity : AppCompatActivity() {
         binding.recyclerComic.adapter = adapter
     }
 
-    private fun initVM(longExtra: Long) {
+    private fun initViewModel(longExtra: Long) {
         viewModel = getViewModel {
             CharactersDetailViewModel(
                 longExtra,

@@ -20,8 +20,8 @@ class CharacterDetailRepositoryImpl(application: DataApp) : CharacterDetailRepos
 
     override suspend fun getComicsForCharacter(id: Long, idComics: List<String>): List<Comic> = withContext(Dispatchers.IO) {
         with(database.getComicsDao()) {
-            var listComicsforCharacter = getListComicCharacter(idComics).map { it.toDomainModel() }
-            if (listComicsforCharacter.isEmpty()) {
+            var characterComics = getListComicCharacter(idComics).map { it.toDomainModel() }
+            if (characterComics.isEmpty()) {
                 val response = service.getComicsForCharacter(
                     id, TIME_STAMP, MARVEL_PUBLIC_KEY, hashcode, DEFAULT_OFFSET, LIMIT
                 )
@@ -31,13 +31,13 @@ class CharacterDetailRepositoryImpl(application: DataApp) : CharacterDetailRepos
                             .also { list ->
                                 insertComics(list)
                                 list.forEach {
-                                    (listComicsforCharacter as MutableList<Comic>).add(it.toDomainModel())
+                                    (characterComics as MutableList<Comic>).add(it.toDomainModel())
                                 }
                             }
                     }
                 }
             }
-            return@withContext listComicsforCharacter
+            return@withContext characterComics
         }
     }
 }
