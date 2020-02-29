@@ -26,7 +26,7 @@ class CharactersRepositoryImpl(application: DataApp) : CharactersRepository {
                     }
                 }
             }
-            return@withContext getAllCharacters().map { it.toDomainEntity() }
+            return@withContext getAllCharacters().map { it.toDomainModel() }
         }
     }
 }
