@@ -16,9 +16,7 @@ class EventsRepositoryImpl(application: DataApp) : EventsRepository {
     private val database = application.database
 
     override suspend fun invoke(): List<Event> = withContext(Dispatchers.IO) {
-
         with(database.getEventsDao()) {
-
             if (eventsCounts() <= 0) {
                 val response = MarvelServiceManager.service.getAllEvents(
                     TIME_STAMP, MARVEL_PUBLIC_KEY,
@@ -37,4 +35,3 @@ class EventsRepositoryImpl(application: DataApp) : EventsRepository {
         }
     }
 }
-
