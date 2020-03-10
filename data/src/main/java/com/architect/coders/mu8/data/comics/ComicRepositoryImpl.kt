@@ -31,7 +31,7 @@ class ComicRepositoryImpl(application: DataApp) : ComicRepository {
                 if (response.isSuccessful) {
                     response.body()?.data?.results?.run {
                         map { it.toDatabaseEntity() }.also { comicsEntityList ->
-                            insertComics(comicsEntityList as List<ComicsEntity>)
+                            insertComics(comicsEntityList)
                         }
                     }
                 }

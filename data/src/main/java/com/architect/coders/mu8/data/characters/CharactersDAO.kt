@@ -16,4 +16,10 @@ interface CharactersDAO {
 
     @Insert(onConflict = IGNORE)
     fun insertCharacters(characters: List<CharactersEntity>)
+
+    @Query(value = "SELECT * FROM CharactersEntity WHERE id = :id")
+    fun findbyId(id: Long): CharactersEntity
+
+    @Insert(onConflict = IGNORE)
+    fun insertCharacter(character: CharactersEntity)
 }

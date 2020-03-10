@@ -53,6 +53,9 @@ dependencies {
     api LibsDependencies.retrofitGson
     api LibsDependencies.httpLoggingInterceptor
 
+    implementation LibsDependencies.dagger
+    kapt LibsDependencies.kaptDagger
+
     testImplementation TestDependencies.junit
     testImplementation TestDependencies.robolectric
     testImplementation TestDependencies.coroutinesTest

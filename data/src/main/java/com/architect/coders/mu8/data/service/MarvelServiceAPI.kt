@@ -6,6 +6,7 @@ import com.architect.coders.mu8.data.events.EventsResponse
 import com.architect.coders.mu8.data.response.BaseResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val TIME_STAMP = "ts"
@@ -13,6 +14,7 @@ private const val API_KEY = "apikey"
 private const val HASH = "hash"
 private const val OFFSET = "offset"
 private const val LIMIT = "limit"
+private const val CHARACTER_ID = "characterId"
 
 /**
  * All marvel API Calls requires {@Link [TIME_STAMP]}, {@Link[API_KEY]}, and {@Link [HASH]}
@@ -45,4 +47,22 @@ interface MarvelServiceAPI {
         @Query(OFFSET) offset: Int,
         @Query(LIMIT) limit: Int
     ): Response<BaseResponse<EventsResponse>>
+
+    @GET("/v1/public/characters/{characterId}")
+    suspend fun findCharacterById(
+        @Query(TIME_STAMP) timeStamp: String,
+        @Query(API_KEY) apiKey: String,
+        @Query(HASH) hash: String,
+        @Path(CHARACTER_ID) characterId: Long
+    ): Response<BaseResponse<CharactersResponse>>
+
+    @GET("/v1/public/characters/{characterId}/comics")
+    suspend fun getComicsForCharacter(
+        @Path(CHARACTER_ID) characterId: Long,
+        @Query(TIME_STAMP) timeStamp: String,
+        @Query(API_KEY) apiKey: String,
+        @Query(HASH) hash: String,
+        @Query(OFFSET) offset: Int,
+        @Query(LIMIT) limit: Int
+    ): Response<BaseResponse<ComicResponse>>
 }
