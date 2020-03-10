@@ -2,6 +2,7 @@ package com.architect.coders.mu8.characters
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.utils.Event
 import com.architect.coders.mu8.utils.ScopedViewModel
 import com.architect.codes.mu8.characters.Character
@@ -29,7 +30,7 @@ class CharactersViewModel(private val charactersUseCase: CharactersUseCase) : Sc
     private fun getCharacters() {
         launch {
             _loading.value = true
-            _characters.value = charactersUseCase()
+            _characters.value = charactersUseCase.invoke()
             _loading.value = false
         }
     }

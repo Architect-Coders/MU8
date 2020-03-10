@@ -11,20 +11,23 @@ import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
 import com.architect.coders.mu8.databinding.ActivityCharactersBinding
 import com.architect.coders.mu8.utils.EventObserver
+import com.architect.coders.mu8.utils.app
 import com.architect.coders.mu8.utils.getViewModel
 import com.architect.coders.mu8.utils.startActivity
 import com.architect.codes.mu8.characters.CharactersUseCaseImpl
 
 class CharactersActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: CharactersViewModel
     private lateinit var adapter: CharactersAdapter
     private lateinit var binding: ActivityCharactersBinding
+    private lateinit var component: CharactersActivityComponent
+    private val viewModel by lazy { getViewModel { component.charactersViewModel } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_characters)
+        component = app.component.plus(CharactersActivityModule())
 
         initViewModel()
         initToolbar()
@@ -34,7 +37,7 @@ class CharactersActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = getViewModel { CharactersViewModel(CharactersUseCaseImpl(CharactersRepositoryImpl(application as DataApp))) }
+        /*viewModel = getViewModel { CharactersViewModel(CharactersUseCaseImpl(CharactersRepositoryImpl(application as DataApp))) }*/
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
     }

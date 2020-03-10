@@ -46,9 +46,14 @@ dependencies {
     implementation SupportDependencies.material
     implementation SupportDependencies.crashlytics
     implementation SupportDependencies.firebaseAnalytics
+    implementation LibsDependencies.room
+    kapt LibsDependencies.roomCompiler
 
     implementation LibsDependencies.glide
     annotationProcessor LibsDependencies.glideAnnotation
+
+    implementation LibsDependencies.dagger
+    kapt LibsDependencies.kaptDagger
 
     testImplementation TestDependencies.junit
     androidTestImplementation TestDependencies.testJunit
