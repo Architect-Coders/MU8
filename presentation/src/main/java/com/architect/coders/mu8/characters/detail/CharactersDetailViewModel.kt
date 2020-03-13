@@ -1,6 +1,5 @@
 package com.architect.coders.mu8.characters.detail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.utils.ScopedViewModel
@@ -8,12 +7,15 @@ import com.architect.codes.mu8.characters.Character
 import com.architect.codes.mu8.characters.CharactersUseCase
 import com.architect.codes.mu8.charactersDetail.CharacterDetailUseCase
 import com.architect.codes.mu8.comics.Comic
+import com.architect.codes.mu8.utils.ERROR_INTERNET_MESSAGE
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-class CharactersDetailViewModel(private val characterId: Long,
-                                private val characterDetailUseCase: CharacterDetailUseCase,
-                                private val charactersUseCase: CharactersUseCase) :
+class CharactersDetailViewModel(
+    private val characterId: Long,
+    private val characterDetailUseCase: CharacterDetailUseCase,
+    private val charactersUseCase: CharactersUseCase
+) :
     ScopedViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
@@ -24,6 +26,9 @@ class CharactersDetailViewModel(private val characterId: Long,
 
     private val _comicsForCharacter = MutableLiveData<List<Comic>>()
     val comicsForCharacter: LiveData<List<Comic>> get() = _comicsForCharacter
+
+    private val _messageError = MutableLiveData<String>()
+    val messageError: LiveData<String> get() = _messageError
 
     init {
         getDetailCharacter()
@@ -36,7 +41,7 @@ class CharactersDetailViewModel(private val characterId: Long,
                 _character.value = charactersUseCase.findCharacter(characterId)
                 getComics()
             } catch (e: IOException) {
-                // _detailCharacter.value = In
+                _messageError.value = ERROR_INTERNET_MESSAGE
             }
             _loading.value = false
         }
@@ -44,10 +49,13 @@ class CharactersDetailViewModel(private val characterId: Long,
 
     private fun getComics() {
         launch {
-            _character.value?.let {
-                _comicsForCharacter.value = characterDetailUseCase.getComicsForCharacter(it.id, it.comicIds)
+            try {
+                _character.value?.let {
+                    _comicsForCharacter.value = characterDetailUseCase.getComicsForCharacter(it.id, it.comicIds)
+                }
+            } catch (e: IOException) {
+                _messageError.value = ERROR_INTERNET_MESSAGE
             }
-            Log.i("tag", _comicsForCharacter.value.toString())
         }
     }
 }

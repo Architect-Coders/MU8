@@ -11,6 +11,7 @@ import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
 import com.architect.coders.mu8.data.charactersDetail.CharacterDetailRepositoryImpl
 import com.architect.coders.mu8.databinding.ActivityCharactersDetailBinding
 import com.architect.coders.mu8.utils.getViewModel
+import com.architect.coders.mu8.utils.snackbar
 import com.architect.codes.mu8.characters.CharactersUseCaseImpl
 import com.architect.codes.mu8.charactersDetail.CharacterDetalUseCaseImpl
 import com.architect.codes.mu8.comics.Comic
@@ -28,7 +29,13 @@ class CharactersDetailActivity : AppCompatActivity() {
 
         initViewModel(intent.getLongExtra(CHARACTER, DEFAULT_CHARATER_ID))
         initRecycler()
+        observerViewModel()
+
+    }
+
+    private fun observerViewModel() {
         viewModel.comicsForCharacter.observe(this, Observer(::updateRecycler))
+        viewModel.messageError.observe(this, Observer(::showMessage))
     }
 
     private fun updateRecycler(list: List<Comic>?) {
@@ -52,6 +59,8 @@ class CharactersDetailActivity : AppCompatActivity() {
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
     }
+
+    private fun showMessage(message: String) = binding.recyclerComic.snackbar(message)
 
     companion object {
         const val CHARACTER = "DetailActivity:Character"
