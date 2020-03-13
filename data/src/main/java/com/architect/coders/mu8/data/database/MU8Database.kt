@@ -10,15 +10,17 @@ import com.architect.coders.mu8.data.comics.ComicsEntity
 import com.architect.coders.mu8.data.database.converter.ListStringTypeConverters
 import com.architect.coders.mu8.data.database.converter.ThumbnailTypeConverters
 import com.architect.coders.mu8.data.database.converter.UrlsTypeConverters
+import com.architect.coders.mu8.data.events.EventsDAO
+import com.architect.coders.mu8.data.events.EventsEntity
 
 private const val DATABASE_VERSION = 2
 
 @Database(
     entities = [
         CharactersEntity::class,
-        ComicsEntity::class],
-    version = DATABASE_VERSION
-)
+        ComicsEntity::class,
+        EventsEntity::class],
+    version = DATABASE_VERSION)
 @TypeConverters(
     UrlsTypeConverters::class,
     ThumbnailTypeConverters::class,
@@ -26,5 +28,6 @@ private const val DATABASE_VERSION = 2
 )
 abstract class MU8Database : RoomDatabase() {
     abstract fun getCharactersDao(): CharactersDAO
+    abstract fun getEventsDao(): EventsDAO
     abstract fun getComicsDao(): ComicsDAO
 }
