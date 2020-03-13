@@ -30,7 +30,6 @@ class CharactersDetailActivity : AppCompatActivity() {
         initViewModel(intent.getLongExtra(CHARACTER, DEFAULT_CHARATER_ID))
         initRecycler()
         observerViewModel()
-
     }
 
     private fun observerViewModel() {
