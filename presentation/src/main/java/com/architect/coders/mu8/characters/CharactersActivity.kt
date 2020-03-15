@@ -7,14 +7,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.characters.detail.CharactersDetailActivity
-import com.architect.coders.mu8.data.DataApp
-import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
 import com.architect.coders.mu8.databinding.ActivityCharactersBinding
 import com.architect.coders.mu8.utils.EventObserver
 import com.architect.coders.mu8.utils.app
 import com.architect.coders.mu8.utils.getViewModel
 import com.architect.coders.mu8.utils.startActivity
-import com.architect.codes.mu8.characters.CharactersUseCaseImpl
 
 class CharactersActivity : AppCompatActivity() {
 

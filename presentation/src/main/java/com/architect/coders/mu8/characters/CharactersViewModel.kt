@@ -2,14 +2,13 @@ package com.architect.coders.mu8.characters
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.architect.coders.mu8.data.DataApp
+import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
 import com.architect.coders.mu8.utils.Event
 import com.architect.coders.mu8.utils.ScopedViewModel
 import com.architect.codes.mu8.characters.Character
-import com.architect.codes.mu8.characters.CharactersUseCase
 import kotlinx.coroutines.launch
 
-class CharactersViewModel(private val charactersUseCase: CharactersUseCase) : ScopedViewModel() {
+class CharactersViewModel(private val charactersUseCase: CharactersRepositoryImpl) : ScopedViewModel() {
 
     private val _navigateToCharacter = MutableLiveData<Event<Long>>()
     val navigateToCharacter: LiveData<Event<Long>> get() = _navigateToCharacter

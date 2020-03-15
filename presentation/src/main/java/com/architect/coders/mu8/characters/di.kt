@@ -2,9 +2,6 @@ package com.architect.coders.mu8.characters
 
 import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
-import com.architect.codes.mu8.characters.CharactersRepository
-import com.architect.codes.mu8.characters.CharactersUseCase
-import com.architect.codes.mu8.characters.CharactersUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
@@ -13,13 +10,14 @@ import dagger.Subcomponent
 class CharactersActivityModule {
 
     @Provides
-    fun characterViewModelProvider(charactersUseCase: CharactersUseCase) = CharactersViewModel(charactersUseCase)
+    fun charactersViewModelProvider(charactersUseCase: CharactersRepositoryImpl): CharactersViewModel {
+        return CharactersViewModel(charactersUseCase)
+    }
 
     @Provides
-    fun charactersUseCaseProvider(charactersRepository: CharactersRepository) = CharactersUseCaseImpl(charactersRepository)
-
-    @Provides
-    fun charactersRepositoryProvider(db: DataApp) : CharactersRepository = CharactersRepositoryImpl(db)
+    fun charactersRepositoryProvider(application: DataApp): CharactersRepositoryImpl {
+        return CharactersRepositoryImpl(application)
+    }
 }
 
 @Subcomponent(modules = [(CharactersActivityModule::class)])

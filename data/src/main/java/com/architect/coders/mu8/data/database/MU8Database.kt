@@ -11,7 +11,7 @@ import com.architect.coders.mu8.data.database.converter.ListStringTypeConverters
 import com.architect.coders.mu8.data.database.converter.ThumbnailTypeConverters
 import com.architect.coders.mu8.data.database.converter.UrlsTypeConverters
 
-private const val DATABASE_VERSION = 2
+private const val DATABASE_VERSION = 3
 
 @Database(
     entities = [
