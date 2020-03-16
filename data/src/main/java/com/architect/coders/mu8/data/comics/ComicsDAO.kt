@@ -17,9 +17,6 @@ interface ComicsDAO {
     @Insert(onConflict = IGNORE)
     fun insertComics(comics: List<ComicsEntity>)
 
-    @Query("SELECT characters_id FROM comics_table WHERE id = :comicId")
-    fun getComicCharacters(comicId: Long): List<String>
-
     @Query("SELECT * FROM comics_table WHERE id IN (:comicsId)")
     fun getListComicCharacter(comicsId: List<String>): List<ComicsEntity>
 }
