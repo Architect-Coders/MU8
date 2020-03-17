@@ -10,8 +10,8 @@ import dagger.Subcomponent
 class CharactersActivityModule {
 
     @Provides
-    fun charactersViewModelProvider(charactersUseCase: CharactersRepositoryImpl): CharactersViewModel {
-        return CharactersViewModel(charactersUseCase)
+    fun charactersViewModelProvider(charactersRepositoryImpl: CharactersRepositoryImpl): CharactersViewModel {
+        return CharactersViewModel(charactersRepositoryImpl)
     }
 
     @Provides

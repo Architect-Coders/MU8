@@ -8,7 +8,7 @@ import com.architect.coders.mu8.utils.ScopedViewModel
 import com.architect.codes.mu8.characters.Character
 import kotlinx.coroutines.launch
 
-class CharactersViewModel(private val charactersUseCase: CharactersRepositoryImpl) : ScopedViewModel() {
+class CharactersViewModel(private val charactersRepositoryImpl: CharactersRepositoryImpl) : ScopedViewModel() {
 
     private val _navigateToCharacter = MutableLiveData<Event<Long>>()
     val navigateToCharacter: LiveData<Event<Long>> get() = _navigateToCharacter
@@ -29,7 +29,7 @@ class CharactersViewModel(private val charactersUseCase: CharactersRepositoryImp
     private fun getCharacters() {
         launch {
             _loading.value = true
-            _characters.value = charactersUseCase.invoke()
+            _characters.value = charactersRepositoryImpl.invoke()
             _loading.value = false
         }
     }
