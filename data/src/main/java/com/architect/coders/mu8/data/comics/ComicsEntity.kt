@@ -27,4 +27,3 @@ fun ComicsEntity.toDomainModel() = Comic(
     urls = urls.map { it.toDomainModel() },
     charactersId = charactersId
 )
-
