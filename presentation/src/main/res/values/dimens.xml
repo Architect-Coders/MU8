@@ -36,5 +36,6 @@
     <dimen name="event_item_elevation">5dp</dimen>
     <dimen name="event_item_shadow_radius">50</dimen>
     <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_250">250dp</dimen>
     <dimen name="int_50">50</dimen>
 </resources>

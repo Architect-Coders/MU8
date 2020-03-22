@@ -7,6 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.characters.detail.CharactersDetailActivity
+import com.architect.coders.mu8.characters.di.CharactersViewModelComponent
+import com.architect.coders.mu8.characters.di.CharactersViewModelModule
 import com.architect.coders.mu8.databinding.ActivityCharactersBinding
 import com.architect.coders.mu8.utils.EventObserver
 import com.architect.coders.mu8.utils.app
@@ -15,26 +17,28 @@ import com.architect.coders.mu8.utils.startActivity
 
 class CharactersActivity : AppCompatActivity() {
 
+    private lateinit var component: CharactersViewModelComponent
     private lateinit var adapter: CharactersAdapter
     private lateinit var binding: ActivityCharactersBinding
-    private lateinit var component: CharactersActivityComponent
+
     private val viewModel by lazy { getViewModel { component.charactersViewModel } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_characters)
-        component = app.component.plus(CharactersActivityModule())
+        component = app.component.plus(CharactersViewModelModule())
 
         initViewModel()
         initToolbar()
         initRecycler()
 
-        viewModel.navigateToCharacter.observe(this, EventObserver { startActivity<CharactersDetailActivity> {} })
+        viewModel.navigateToCharacter.observe(this, EventObserver { startActivity<CharactersDetailActivity> {
+            putExtra(CharactersDetailActivity.CHARACTER, it)
+        } })
     }
 
     private fun initViewModel() {
-        /*viewModel = getViewModel { CharactersViewModel(CharactersUseCaseImpl(CharactersRepositoryImpl(application as DataApp))) }*/
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
     }
