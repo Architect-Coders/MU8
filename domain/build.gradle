@@ -1,9 +1,13 @@
 apply plugin: 'kotlin'
 apply from: "$rootDir/detekt.gradle"
+apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation KotlinDependencies.kotlinStdLib
 
     api KotlinDependencies.coroutines
+
+    implementation LibsDependencies.dagger
+    kapt LibsDependencies.kaptDagger
 }

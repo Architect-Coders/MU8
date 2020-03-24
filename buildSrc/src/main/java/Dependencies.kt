@@ -30,6 +30,7 @@ object Versions {
     internal const val materialVersion = "1.0.0"
     internal const val cardView = "28.0.0"
     internal const val roomVersion = "2.2.3"
+    internal const val dagger = "2.23.1"
 }
 
 object GradleDependencies {
@@ -76,4 +77,6 @@ object LibsDependencies {
     const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLoggingInterceptorVersion}"
     const val room = "androidx.room:room-runtime:${Versions.roomVersion}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
+    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    const val kaptDagger = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 }

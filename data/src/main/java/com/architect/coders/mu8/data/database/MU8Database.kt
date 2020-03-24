@@ -13,7 +13,7 @@ import com.architect.coders.mu8.data.database.converter.UrlsTypeConverters
 import com.architect.coders.mu8.data.events.EventsDAO
 import com.architect.coders.mu8.data.events.EventsEntity
 
-private const val DATABASE_VERSION = 3
+private const val DATABASE_VERSION = 4
 
 @Database(
     entities = [
