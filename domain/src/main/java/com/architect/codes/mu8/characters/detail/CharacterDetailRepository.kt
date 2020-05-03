@@ -1,4 +1,4 @@
-package com.architect.codes.mu8.charactersDetail
+package com.architect.codes.mu8.characters.detail
 
 import com.architect.codes.mu8.comics.Comic
 

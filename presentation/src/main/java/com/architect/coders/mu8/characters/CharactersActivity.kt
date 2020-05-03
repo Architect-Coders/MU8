@@ -7,8 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.characters.detail.CharactersDetailActivity
-import com.architect.coders.mu8.characters.di.CharactersViewModelComponent
-import com.architect.coders.mu8.characters.di.CharactersViewModelModule
+import com.architect.coders.mu8.di.internal.ViewModelComponent
+import com.architect.coders.mu8.di.internal.ViewModelModule
 import com.architect.coders.mu8.databinding.ActivityCharactersBinding
 import com.architect.coders.mu8.utils.EventObserver
 import com.architect.coders.mu8.utils.app
@@ -17,17 +17,17 @@ import com.architect.coders.mu8.utils.startActivity
 
 class CharactersActivity : AppCompatActivity() {
 
-    private lateinit var component: CharactersViewModelComponent
+    private val viewModel by lazy { getViewModel { component.charactersViewModel } }
+
+    private lateinit var component: ViewModelComponent
     private lateinit var adapter: CharactersAdapter
     private lateinit var binding: ActivityCharactersBinding
-
-    private val viewModel by lazy { getViewModel { component.charactersViewModel } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_characters)
-        component = app.component.plus(CharactersViewModelModule())
+        component = app.component.plus(ViewModelModule())
 
         initViewModel()
         initToolbar()
@@ -43,9 +43,7 @@ class CharactersActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
     }
 
-    private fun initToolbar() {
-        viewModel.setTitle(getString(R.string.characters_name))
-    }
+    private fun initToolbar() = viewModel.setTitle(getString(R.string.characters_name))
 
     private fun initRecycler() {
         adapter = CharactersAdapter(viewModel::onCharacterClicked)

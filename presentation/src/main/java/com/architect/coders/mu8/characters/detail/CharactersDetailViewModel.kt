@@ -5,18 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.utils.ScopedViewModel
 import com.architect.codes.mu8.characters.Character
 import com.architect.codes.mu8.characters.CharactersUseCase
-import com.architect.codes.mu8.charactersDetail.CharacterDetailUseCase
+import com.architect.codes.mu8.characters.detail.CharacterDetailUseCase
 import com.architect.codes.mu8.comics.Comic
 import com.architect.codes.mu8.utils.ERROR_INTERNET_MESSAGE
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class CharactersDetailViewModel(
-    private val characterId: Long,
     private val characterDetailUseCase: CharacterDetailUseCase,
     private val charactersUseCase: CharactersUseCase
-) :
-    ScopedViewModel() {
+) : ScopedViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> get() = _loading
@@ -30,11 +28,7 @@ class CharactersDetailViewModel(
     private val _messageError = MutableLiveData<String>()
     val messageError: LiveData<String> get() = _messageError
 
-    init {
-        getDetailCharacter()
-    }
-
-    private fun getDetailCharacter() {
+    fun getDetailCharacter(characterId: Long) {
         launch {
             _loading.value = true
             try {

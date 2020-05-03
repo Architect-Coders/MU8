@@ -9,7 +9,7 @@ import com.architect.coders.mu8.data.utils.DEFAULT_OFFSET
 import com.architect.coders.mu8.data.utils.LIMIT
 import com.architect.coders.mu8.data.utils.MARVEL_PUBLIC_KEY
 import com.architect.coders.mu8.data.utils.TIME_STAMP
-import com.architect.codes.mu8.charactersDetail.CharacterDetailRepository
+import com.architect.codes.mu8.characters.detail.CharacterDetailRepository
 import com.architect.codes.mu8.comics.Comic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
