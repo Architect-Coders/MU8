@@ -8,13 +8,15 @@ import com.architect.codes.mu8.characters.CharactersUseCase
 import com.architect.codes.mu8.characters.detail.CharacterDetailUseCase
 import com.architect.codes.mu8.comics.Comic
 import com.architect.codes.mu8.utils.ERROR_INTERNET_MESSAGE
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class CharactersDetailViewModel(
     private val characterDetailUseCase: CharacterDetailUseCase,
-    private val charactersUseCase: CharactersUseCase
-) : ScopedViewModel() {
+    private val charactersUseCase: CharactersUseCase,
+    uiDispatcher: CoroutineDispatcher
+) : ScopedViewModel(uiDispatcher) {
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> get() = _loading

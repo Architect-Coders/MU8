@@ -7,10 +7,11 @@ import com.architect.coders.mu8.utils.ScopedViewModel
 import com.architect.codes.mu8.comics.ComicUseCase
 import com.architect.codes.mu8.comics.Comic
 import com.architect.codes.mu8.utils.ERROR_INTERNET_MESSAGE
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-class ComicsViewModel(private val useCase: ComicUseCase) : ScopedViewModel() {
+class ComicsViewModel(private val useCase: ComicUseCase, uiDispatcher: CoroutineDispatcher) : ScopedViewModel(uiDispatcher) {
 
     init {
         launch {
@@ -30,13 +31,13 @@ class ComicsViewModel(private val useCase: ComicUseCase) : ScopedViewModel() {
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> get() = _loading
 
-    private val _navegateTo = MutableLiveData<Event<Comic>>()
-    val navegateTo: LiveData<Event<Comic>> get() = _navegateTo
+    private val _navigateTo = MutableLiveData<Event<Comic>>()
+    val navigateTo: LiveData<Event<Comic>> get() = _navigateTo
 
     private val _messageError = MutableLiveData<String>()
     val messageError : LiveData<String> get() = _messageError
 
     fun onComicClicked(comic: Comic) {
-        _navegateTo.value = Event(comic)
+        _navigateTo.value = Event(comic)
     }
 }

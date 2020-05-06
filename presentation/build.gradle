@@ -24,7 +24,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
+    dataBinding {
         enabled true
     }
 }
@@ -35,9 +35,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation KotlinDependencies.kotlinStdLib
-
     implementation JetPackDependencies.lifecycle
-
     implementation SupportDependencies.coreKtx
     implementation SupportDependencies.appCompat
     implementation SupportDependencies.recyclerview
@@ -47,6 +45,7 @@ dependencies {
     implementation SupportDependencies.crashlytics
     implementation SupportDependencies.firebaseAnalytics
     implementation LibsDependencies.room
+
     kapt LibsDependencies.roomCompiler
 
     implementation LibsDependencies.glide
@@ -56,6 +55,8 @@ dependencies {
     kapt LibsDependencies.kaptDagger
 
     testImplementation TestDependencies.junit
+    testImplementation TestDependencies.mockitoKotlin
+    testImplementation TestDependencies.archTesting
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espressoCore
 }

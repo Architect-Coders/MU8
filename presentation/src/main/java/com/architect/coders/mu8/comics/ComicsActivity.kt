@@ -61,7 +61,7 @@ class ComicsActivity : AppCompatActivity() {
     private fun observerViewModel() {
         viewModel.comics.observe(this, Observer(::showComics))
         viewModel.messageError.observe(this, Observer(::showMessage))
-        viewModel.navegateTo.observe(this, EventObserver { comic -> toast(comic.title) })
+        viewModel.navigateTo.observe(this, EventObserver { comic -> toast(comic.title) })
     }
 
     private fun showComics(comics: List<Comic>) {

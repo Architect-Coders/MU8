@@ -4,15 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.BuildConfig
 import com.architect.coders.mu8.utils.ScopedViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 private const val TIME_SLEEP: Long = 2000
 
-class SplashViewModel : ScopedViewModel() {
+class SplashViewModel(uiDispatcher: CoroutineDispatcher) : ScopedViewModel(uiDispatcher) {
 
     sealed class UiModel {
-        class GetVersion(val versionName: String) : UiModel()
+        data class GetVersion(val versionName: String) : UiModel()
         object Navigation : UiModel()
     }
 

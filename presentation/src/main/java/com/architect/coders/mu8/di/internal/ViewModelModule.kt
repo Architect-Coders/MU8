@@ -13,28 +13,36 @@ import com.architect.codes.mu8.comics.ComicUseCase
 import com.architect.codes.mu8.events.EventsUseCase
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineDispatcher
 
-@Module
+@Module(includes = [DispatcherModule::class])
 class ViewModelModule {
 
     @Provides
-    fun provideSplashViewModel() = SplashViewModel()
+    fun provideSplashViewModel(uiDispatcher: CoroutineDispatcher) = SplashViewModel(uiDispatcher)
 
     @Provides
     fun provideCategoriesViewModel(categoriesRepository: CategoriesRepository) = CategoriesViewModel(categoriesRepository)
 
     @Provides
-    fun provideCharactersViewModel(charactersUseCase: CharactersUseCase) = CharactersViewModel(charactersUseCase)
+    fun provideCharactersViewModel(
+        charactersUseCase: CharactersUseCase,
+        uiDispatcher: CoroutineDispatcher
+    ) = CharactersViewModel(charactersUseCase, uiDispatcher)
 
     @Provides
     fun provideCharactersDetailViewModel(
         characterDetailUseCase: CharacterDetailUseCase,
-        charactersUseCase: CharactersUseCase
-    ) = CharactersDetailViewModel(characterDetailUseCase, charactersUseCase)
+        charactersUseCase: CharactersUseCase,
+        uiDispatcher: CoroutineDispatcher
+    ) = CharactersDetailViewModel(characterDetailUseCase, charactersUseCase, uiDispatcher)
 
     @Provides
-    fun provideComicsViewModel(comicUseCase: ComicUseCase) = ComicsViewModel(comicUseCase)
+    fun provideComicsViewModel(comicUseCase: ComicUseCase, uiDispatcher: CoroutineDispatcher) = ComicsViewModel(comicUseCase, uiDispatcher)
 
     @Provides
-    fun provideEventsViewModel(eventsUseCase: EventsUseCase) = EventsViewModel(eventsUseCase)
+    fun provideEventsViewModel(
+        eventsUseCase: EventsUseCase,
+        uiDispatcher: CoroutineDispatcher
+    ) = EventsViewModel(eventsUseCase, uiDispatcher)
 }

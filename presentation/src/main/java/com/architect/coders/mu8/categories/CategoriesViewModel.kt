@@ -8,17 +8,17 @@ import com.architect.codes.mu8.categories.Category
 
 class CategoriesViewModel(private val categoriesRepository: CategoriesRepository) : ViewModel() {
 
+    sealed class UiModel {
+        data class Content(val categories: List<Category>) : UiModel()
+        data class Navigation(val categoryName: String) : UiModel()
+    }
+
     private val _model = MutableLiveData<UiModel>()
     val model: LiveData<UiModel>
         get() {
             if (_model.value == null) refresh()
             return _model
         }
-
-    sealed class UiModel {
-        class Content(val categories: List<Category>) : UiModel()
-        class Navigation(val categoryName: String) : UiModel()
-    }
 
     private fun refresh() {
         _model.value = UiModel.Content(categoriesRepository.categories)
