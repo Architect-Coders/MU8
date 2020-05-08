@@ -14,6 +14,10 @@ import java.io.IOException
 class ComicsViewModel(private val useCase: ComicUseCase, uiDispatcher: CoroutineDispatcher) : ScopedViewModel(uiDispatcher) {
 
     init {
+        onGetComics()
+    }
+
+    fun onGetComics() {
         launch {
             _loading.value = true
             try {
