@@ -6,6 +6,7 @@ import com.architect.coders.mu8.utils.Event
 import com.architect.codes.mu8.comics.Comic
 import com.architect.codes.mu8.comics.ComicUseCase
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +17,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -61,7 +63,9 @@ class ComicsViewModelTest {
             whenever(comicUseCase()).thenReturn(comics)
             viewModel.loading.observeForever(observerLoading)
             viewModel.onGetComics()
-            verify(observerLoading).onChanged(true)
+            //verify(observerLoading).onChanged(true)
+            verify(observerLoading, times(1)).onChanged(true)
+            verify(observerLoading, times(1)).onChanged(false)
         }
     }
 
@@ -69,7 +73,7 @@ class ComicsViewModelTest {
     fun `Click on Event calls Navigation`() {
         viewModel.navigateTo.observeForever(observerNavigation)
         viewModel.onComicClicked(comic)
-        verify(observerNavigation).onChanged(Event(comic))
+        verify(observerNavigation).onChanged(ArgumentMatchers.refEq(Event(comic)))
     }
 
     @After
