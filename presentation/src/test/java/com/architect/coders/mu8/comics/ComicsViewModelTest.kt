@@ -12,7 +12,6 @@ import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.After
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -52,7 +51,7 @@ class ComicsViewModelTest {
         runBlocking {
             whenever(comicUseCase()).thenReturn(comics)
             viewModel.comics.observeForever(observerComic)
-            viewModel.onGetComics()
+            viewModel.initComics()
             verify(observerComic).onChanged(comics)
         }
     }
@@ -62,10 +61,9 @@ class ComicsViewModelTest {
         runBlocking {
             whenever(comicUseCase()).thenReturn(comics)
             viewModel.loading.observeForever(observerLoading)
-            viewModel.onGetComics()
-            //verify(observerLoading).onChanged(true)
-            verify(observerLoading, times(1)).onChanged(true)
-            verify(observerLoading, times(1)).onChanged(false)
+            viewModel.initComics()
+            verify(observerLoading).onChanged(true)
+            verify(observerLoading).onChanged(false)
         }
     }
 

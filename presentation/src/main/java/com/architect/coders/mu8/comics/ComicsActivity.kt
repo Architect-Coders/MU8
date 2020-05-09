@@ -38,6 +38,7 @@ class ComicsActivity : AppCompatActivity() {
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
 
+        viewModel.initComics()
         configureToolbar()
         configureRecycler()
         observerViewModel()
