@@ -26,7 +26,7 @@ class CharactersViewModel(
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> get() = _title
 
-    fun getCharacters() {
+    internal fun getCharacters() {
         launch {
             _loading.value = true
             _characters.value = charactersUseCase()
