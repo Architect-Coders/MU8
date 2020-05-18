@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.architect.coders.mu8.utils.Event
 import com.architect.coders.mu8.utils.ScopedViewModel
-import com.architect.codes.mu8.comics.ComicUseCase
 import com.architect.codes.mu8.comics.Comic
+import com.architect.codes.mu8.comics.ComicUseCase
 import com.architect.codes.mu8.utils.ERROR_INTERNET_MESSAGE
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import java.io.IOException
 
 class ComicsViewModel(private val useCase: ComicUseCase, uiDispatcher: CoroutineDispatcher) : ScopedViewModel(uiDispatcher) {
 
-    init {
+    internal fun initComics() {
         launch {
             _loading.value = true
             try {
