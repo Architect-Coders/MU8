@@ -21,6 +21,7 @@ object Versions {
     internal const val espresso = "3.2.0"
     internal const val testJunit = "1.1.1"
     internal const val robolectric = "4.3.1"
+    internal const val mockitoKotlin = "2.2.0"
     internal const val coroutinesTest = "1.2.1"
     internal const val lifecycleVersion = "2.1.0"
     internal const val firebaseAnalytics = "17.2.0"
@@ -31,6 +32,7 @@ object Versions {
     internal const val cardView = "28.0.0"
     internal const val roomVersion = "2.2.3"
     internal const val dagger = "2.23.1"
+    internal const val archTesting = "2.1.0"
 }
 
 object GradleDependencies {
@@ -63,7 +65,9 @@ object KotlinDependencies {
 object TestDependencies {
     const val junit = "junit:junit:${Versions.junit}"
     const val testJunit = "androidx.test.ext:junit:${Versions.testJunit}"
+    const val archTesting = "androidx.arch.core:core-testing:${Versions.archTesting}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
     const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTest}"
 }

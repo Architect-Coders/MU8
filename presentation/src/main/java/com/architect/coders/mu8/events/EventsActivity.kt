@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.architect.coders.mu8.R
 import com.architect.coders.mu8.di.internal.ViewModelComponent
 import com.architect.coders.mu8.di.internal.ViewModelModule
-import com.architect.coders.mu8.events.EventsUiModel.Contect
-import com.architect.coders.mu8.events.EventsUiModel.Loading
-import com.architect.coders.mu8.events.EventsUiModel.Navegation
+import com.architect.coders.mu8.events.EventsViewModel.EventsUiModel.Content
+import com.architect.coders.mu8.events.EventsViewModel.EventsUiModel.Loading
+import com.architect.coders.mu8.events.EventsViewModel.EventsUiModel.Navigation
 import com.architect.coders.mu8.utils.app
 import com.architect.coders.mu8.utils.getViewModel
 
@@ -47,12 +47,12 @@ class EventsActivity : AppCompatActivity() {
         viewModel.model.observe(this, Observer(::updateUi))
     }
 
-    private fun updateUi(model: EventsUiModel) {
+    private fun updateUi(model: EventsViewModel.EventsUiModel) {
         progress.visibility = if (model == Loading) VISIBLE else GONE
 
         when (model) {
-            is Contect -> adapter.events = model.events
-            is Navegation -> Toast.makeText(this, model.event.title, Toast.LENGTH_LONG).show()
+            is Content -> adapter.events = model.events
+            is Navigation -> Toast.makeText(this, model.event.title, Toast.LENGTH_LONG).show()
         }
     }
 }

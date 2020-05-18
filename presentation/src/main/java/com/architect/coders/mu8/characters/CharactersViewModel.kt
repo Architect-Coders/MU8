@@ -6,9 +6,13 @@ import com.architect.coders.mu8.utils.Event
 import com.architect.coders.mu8.utils.ScopedViewModel
 import com.architect.codes.mu8.characters.Character
 import com.architect.codes.mu8.characters.CharactersUseCase
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
-class CharactersViewModel(private val charactersUseCase: CharactersUseCase) : ScopedViewModel() {
+class CharactersViewModel(
+    private val charactersUseCase: CharactersUseCase,
+    uiDispatcher: CoroutineDispatcher
+) : ScopedViewModel(uiDispatcher) {
 
     private val _navigateToCharacter = MutableLiveData<Event<Long>>()
     val navigateToCharacter: LiveData<Event<Long>> get() = _navigateToCharacter
