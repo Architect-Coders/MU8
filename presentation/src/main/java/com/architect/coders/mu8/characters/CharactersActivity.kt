@@ -36,6 +36,8 @@ class CharactersActivity : AppCompatActivity() {
         viewModel.navigateToCharacter.observe(this, EventObserver { startActivity<CharactersDetailActivity> {
             putExtra(CharactersDetailActivity.CHARACTER, it)
         } })
+
+        viewModel.getCharacters()
     }
 
     private fun initViewModel() {
