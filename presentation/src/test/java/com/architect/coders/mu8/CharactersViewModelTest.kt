@@ -34,9 +34,9 @@ class CharactersViewModelTest {
 
     @Before
     fun setUp() {
-
         characterViewModel = CharactersViewModel(characterUseCase, Dispatchers.Unconfined)
-        character = Character(1,
+        character = Character(
+            1,
             "Spider-man",
             "Test",
             "https://cronicaglobal.elespanol.com/uploads/s1/61/11/51/3/main-700b9bff30_11_1000x528.jpeg"
@@ -65,13 +65,13 @@ class CharactersViewModelTest {
 
     @Test
     fun `Click on Character calls`() {
-        //Given
+        // Given
         characterViewModel.navigateToCharacter.observeForever(observerCharactersItem)
 
-        //When
+        // When
         characterViewModel.onCharacterClicked(character)
 
-        //Them
+        // Then
         verify(observerCharactersItem).onChanged(ArgumentMatchers.refEq(Event(1.toLong())))
     }
 
