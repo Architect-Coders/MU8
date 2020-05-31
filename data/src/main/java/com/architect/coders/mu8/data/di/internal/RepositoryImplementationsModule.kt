@@ -6,6 +6,7 @@ import com.architect.coders.mu8.data.characters.CharactersRepositoryImpl
 import com.architect.coders.mu8.data.charactersDetail.CharacterDetailRepositoryImpl
 import com.architect.coders.mu8.data.comics.ComicRepositoryImpl
 import com.architect.coders.mu8.data.events.EventsRepositoryImpl
+import com.architect.coders.mu8.data.service.MarvelServiceManager
 import dagger.Module
 import dagger.Provides
 
@@ -16,14 +17,14 @@ internal class RepositoryImplementationsModule {
     fun provideCategoriesRepository() = CategoriesRepository()
 
     @Provides
-    fun provideCharactersRepositoryImpl(app: DataApp) = CharactersRepositoryImpl(app)
+    fun provideCharactersRepositoryImpl(app: DataApp, manager: MarvelServiceManager) = CharactersRepositoryImpl(app, manager)
 
     @Provides
-    fun provideCharacterDetailRepositoryImpl(app: DataApp) = CharacterDetailRepositoryImpl(app)
+    fun provideCharacterDetailRepositoryImpl(app: DataApp, manager: MarvelServiceManager) = CharacterDetailRepositoryImpl(app, manager)
 
     @Provides
-    fun provideComicRepositoryImpl(app: DataApp) = ComicRepositoryImpl(app)
+    fun provideComicRepositoryImpl(app: DataApp, manager: MarvelServiceManager) = ComicRepositoryImpl(app, manager)
 
     @Provides
-    fun provideEventsRepositoryImpl(app: DataApp) = EventsRepositoryImpl(app)
+    fun provideEventsRepositoryImpl(app: DataApp, manager: MarvelServiceManager) = EventsRepositoryImpl(app, manager)
 }

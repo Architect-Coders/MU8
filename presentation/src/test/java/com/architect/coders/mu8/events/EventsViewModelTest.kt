@@ -1,4 +1,4 @@
-package com.architect.coders.mu8
+package com.architect.coders.mu8.events
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer

@@ -11,16 +11,16 @@ import com.architect.codes.mu8.events.EventsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class EventsRepositoryImpl(application: DataApp) : EventsRepository {
+class EventsRepositoryImpl(application: DataApp, private val manager: MarvelServiceManager) : EventsRepository {
 
     private val database = application.database
 
     override suspend fun invoke(): List<Event> = withContext(Dispatchers.IO) {
         with(database.getEventsDao()) {
             if (eventsCounts() <= 0) {
-                val response = MarvelServiceManager.service.getAllEvents(
+                val response = manager.service.getAllEvents(
                     TIME_STAMP, MARVEL_PUBLIC_KEY,
-                    MarvelServiceManager.hashcode,
+                    manager.hashcode,
                     DEFAULT_OFFSET,
                     LIMIT
                 )

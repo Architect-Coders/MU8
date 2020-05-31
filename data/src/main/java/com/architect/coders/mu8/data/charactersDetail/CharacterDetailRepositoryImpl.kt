@@ -3,8 +3,7 @@ package com.architect.coders.mu8.data.charactersDetail
 import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.data.comics.toDatabaseEntity
 import com.architect.coders.mu8.data.comics.toDomainModel
-import com.architect.coders.mu8.data.service.MarvelServiceManager.hashcode
-import com.architect.coders.mu8.data.service.MarvelServiceManager.service
+import com.architect.coders.mu8.data.service.MarvelServiceManager
 import com.architect.coders.mu8.data.utils.DEFAULT_OFFSET
 import com.architect.coders.mu8.data.utils.LIMIT
 import com.architect.coders.mu8.data.utils.MARVEL_PUBLIC_KEY
@@ -14,7 +13,7 @@ import com.architect.codes.mu8.comics.Comic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class CharacterDetailRepositoryImpl(application: DataApp) : CharacterDetailRepository {
+class CharacterDetailRepositoryImpl(application: DataApp, private val manager: MarvelServiceManager) : CharacterDetailRepository {
 
     private val database = application.database
 
@@ -22,8 +21,8 @@ class CharacterDetailRepositoryImpl(application: DataApp) : CharacterDetailRepos
         with(database.getComicsDao()) {
             var characterComics = getListComicCharacter(idComics).map { it.toDomainModel() }
             if (characterComics.isEmpty()) {
-                val response = service.getComicsForCharacter(
-                    id, TIME_STAMP, MARVEL_PUBLIC_KEY, hashcode, DEFAULT_OFFSET, LIMIT
+                val response = manager.service.getComicsForCharacter(
+                    id, TIME_STAMP, MARVEL_PUBLIC_KEY, manager.hashcode, DEFAULT_OFFSET, LIMIT
                 )
                 if (response.isSuccessful) {
                     response.body()?.data?.results?.run {
