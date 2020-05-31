@@ -4,6 +4,7 @@ import android.app.Instrumentation
 import androidx.test.platform.app.InstrumentationRegistry
 import com.architect.coders.mu8.data.DataApp
 import com.architect.coders.mu8.data.comics.ComicRepositoryImpl
+import com.architect.coders.mu8.data.service.MarvelServiceManager
 import com.architect.codes.mu8.callback.ComicRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -36,7 +37,7 @@ class ComicRepositoryImplTest {
             InstrumentationRegistry.getInstrumentation().targetContext
         ) as DataApp
         application.onCreate()
-        repository = ComicRepositoryImpl(application)
+        repository = ComicRepositoryImpl(application, MarvelServiceManager(""))
     }
 
     @After
